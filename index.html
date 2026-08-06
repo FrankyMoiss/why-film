@@ -36,102 +36,6 @@
     overflow-x: hidden;
   }
 
-  /* ─── BANDO TOP ─── */
-  .bando {
-    width: 100%;
-    display: block;
-    max-height: 220px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background-image:
-      radial-gradient(ellipse at 50% 30%, rgba(212,160,23,0.18) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(26,16,0,0.3) 40%, rgba(10,10,10,0.88) 100%),
-      url('assets/contact-bg.png');
-    background-position: center, center, center 50%;
-    background-size: cover, cover, cover;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-  }
-
-  .hero-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .hero-logo-img {
-    position: relative;
-    width: min(340px, 70vw);
-    opacity: 0;
-    cursor: pointer;
-    animation: fadeUp 1.2s ease forwards 0.3s;
-  }
-
-  .hero-tagline {
-    position: relative;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 300;
-    font-size: clamp(0.8rem, 2vw, 1rem);
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 0.7s;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 1.2s;
-  }
-
-  .hero-scroll span {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.2); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   /* ─── NAV ─── */
   nav {
     position: sticky;
@@ -154,7 +58,7 @@
   .nav-logo {
     height: 52px;
     padding: 8px 0;
-    margin-right: 3rem;
+    margin-right: 2.5rem;
     flex-shrink: 0;
     cursor: pointer;
   }
@@ -169,22 +73,23 @@
 
   .nav-links li a {
     display: block;
-    padding: 1.2rem 1.4rem;
+    padding: 1.2rem 1.1rem;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
     position: relative;
+    white-space: nowrap;
   }
 
   .nav-links li a::after {
     content: '';
     position: absolute;
-    bottom: 0; left: 1.4rem; right: 1.4rem;
+    bottom: 0; left: 1.1rem; right: 1.1rem;
     height: 2px;
     background: var(--gold);
     transform: scaleX(0);
@@ -213,7 +118,7 @@
     border: none;
     color: var(--muted);
     cursor: pointer;
-    padding: 0.3rem 0.3rem;
+    padding: 0.3rem;
     font-family: inherit;
     font-size: inherit;
     letter-spacing: inherit;
@@ -224,19 +129,19 @@
   .lang-switch button.active { color: var(--gold); font-weight: 600; }
   .lang-switch span { color: #444; }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1150px) {
     .nav-inner { padding: 0 1rem; }
-    .nav-logo { margin-right: 1.2rem; height: 44px; }
-    .nav-links li a { padding: 1rem 0.7rem; letter-spacing: 0.12em; font-size: 0.75rem; }
-    .nav-links li a::after { left: 0.7rem; right: 0.7rem; }
+    .nav-logo { margin-right: 1rem; height: 44px; }
+    .nav-links li a { padding: 1rem 0.6rem; letter-spacing: 0.1em; font-size: 0.72rem; }
+    .nav-links li a::after { left: 0.6rem; right: 0.6rem; }
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 860px) {
     .nav-inner { flex-wrap: wrap; padding: 0.6rem 1rem; gap: 0.5rem; }
     .nav-logo { margin-right: auto; }
     .nav-links { order: 3; flex: 1 1 100%; justify-content: center; }
-    .nav-links li a { padding: 0.6rem 0.6rem; font-size: 0.7rem; letter-spacing: 0.1em; }
-    .nav-links li a::after { left: 0.6rem; right: 0.6rem; }
+    .nav-links li a { padding: 0.6rem 0.5rem; font-size: 0.68rem; letter-spacing: 0.08em; }
+    .nav-links li a::after { left: 0.5rem; right: 0.5rem; }
     .lang-switch { margin-left: 0; }
     section { padding: 3rem 1.2rem; }
     body { background-attachment: scroll, scroll; }
@@ -246,7 +151,7 @@
   section {
     display: none;
     min-height: 80vh;
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -269,6 +174,50 @@
     margin-bottom: 3rem;
   }
 
+  /* ─── ACCUEIL ─── */
+  #accueil { padding-top: 3rem; }
+
+  .featured-video {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+  }
+
+  .featured-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+
+  .featured-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .featured-label {
+    padding: 1.1rem 1.4rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .accueil-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  }
+
   /* ─── VIDEO GRID ─── */
   .video-grid {
     display: grid;
@@ -283,7 +232,6 @@
     background: var(--dark3);
     border: 1px solid rgba(255,255,255,0.06);
     overflow: hidden;
-    cursor: pointer;
     transition: border-color 0.3s, transform 0.3s;
   }
 
@@ -307,21 +255,12 @@
   }
 
   .video-label {
-    padding: 0.8rem 1rem;
+    padding: 0.9rem 1rem;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .video-label strong {
-    display: block;
     font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--text);
-    font-weight: 400;
-    margin-bottom: 0.2rem;
-    letter-spacing: 0.05em;
   }
 
   /* ─── RÉALISATIONS FILTERS ─── */
@@ -347,18 +286,6 @@
 
   .filter-chip:hover { border-color: rgba(212,160,23,0.4); color: var(--text); }
   .filter-chip.active { background: var(--gold); border-color: var(--gold); color: #000; }
-
-  .realisations-empty {
-    display: none;
-    color: #aaa;
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 0.05em;
-    font-size: 0.95rem;
-    padding: 2.5rem 1rem;
-    border: 1px dashed rgba(255,255,255,0.18);
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
 
   /* ─── ABOUT ─── */
   .about-layout {
@@ -497,10 +424,7 @@
   }
 
   /* ─── CONTACT ─── */
-  #contact {
-    position: relative;
-    border-top: 1px solid rgba(212,160,23,0.12);
-  }
+  #contact { position: relative; border-top: 1px solid rgba(212,160,23,0.12); }
 
   .contact-layout {
     display: grid;
@@ -571,11 +495,7 @@
     gap: 2rem;
   }
 
-  .footer-logo {
-    height: 60px;
-    opacity: 0.85;
-    cursor: pointer;
-  }
+  .footer-logo { height: 60px; opacity: 0.85; cursor: pointer; }
 
   .footer-center {
     display: flex;
@@ -589,6 +509,7 @@
     justify-content: center;
     gap: 2rem;
     list-style: none;
+    flex-wrap: wrap;
   }
 
   .footer-links a {
@@ -605,11 +526,7 @@
 
   .footer-copy { font-size: 0.75rem; color: #444; letter-spacing: 0.1em; }
 
-  .footer-signature {
-    height: 60px;
-    opacity: 0.85;
-    object-fit: contain;
-  }
+  .footer-signature { height: 60px; opacity: 0.85; object-fit: contain; }
 
   @media (max-width: 700px) {
     .footer-inner { flex-direction: column; align-items: center; text-align: center; }
@@ -618,29 +535,15 @@
 </head>
 <body>
 
-<!-- ─── BANDO ─── -->
-<img src="assets/bando.svg" alt="Why Film FPV" class="bando">
-
-<!-- ─── HERO ─── -->
-<div class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <img src="assets/logo.svg" alt="Why Film" class="hero-logo-img" onclick="showSection('showreel'); return false;">
-  <p class="hero-tagline" data-i18n="hero_tagline">Drone · FPV · Aerial Cinematography</p>
-  <div class="hero-scroll">
-    <span data-i18n="hero_scroll">Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</div>
-
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-inner">
-    <img src="assets/logo.svg" alt="Why Film" class="nav-logo" onclick="showSection('showreel'); return false;">
+    <img src="assets/logo.svg" alt="Why Film" class="nav-logo" onclick="showSection('accueil')">
     <ul class="nav-links">
-      <li><a href="#" onclick="showSection('showreel'); return false;" class="active" id="nav-showreel" data-i18n="nav_showreel">Showreel</a></li>
+      <li><a href="#" onclick="showSection('showreel'); return false;" id="nav-showreel" data-i18n="nav_showreel">Showreel</a></li>
       <li><a href="#" onclick="showSection('realisations'); return false;" id="nav-realisations" data-i18n="nav_realisations">Réalisations</a></li>
       <li><a href="#" onclick="showSection('services'); return false;" id="nav-services" data-i18n="nav_services">Services</a></li>
-      <li><a href="#" onclick="showSection('marques'); return false;" id="nav-marques" data-i18n="nav_marques">Marques</a></li>
+      <li><a href="#" onclick="showSection('marques'); return false;" id="nav-marques" data-i18n="nav_marques">Ils nous font confiance</a></li>
       <li><a href="#" onclick="showSection('apropos'); return false;" id="nav-apropos" data-i18n="nav_apropos">À propos</a></li>
       <li><a href="#" onclick="showSection('contact'); return false;" id="nav-contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
@@ -652,34 +555,45 @@
   </div>
 </nav>
 
+<!-- ─── ACCUEIL ─── -->
+<section id="accueil" class="active">
+  <p class="accueil-tagline" data-i18n="hero_tagline">Drone · FPV · Aerial Cinematography</p>
+  <div class="featured-video">
+    <div class="featured-embed">
+      <iframe src="https://player.vimeo.com/video/1012702143?title=0&byline=0&portrait=0" allowfullscreen allow="autoplay; fullscreen"></iframe>
+    </div>
+    <div class="featured-label">Red Komodo FPV &amp; DJI Inspire 3 Showreel</div>
+  </div>
+</section>
+
 <!-- ─── SHOWREEL ─── -->
-<section id="showreel" class="active">
+<section id="showreel">
   <h2 class="section-title" data-i18n="section_showreel_title">Showreel</h2>
   <div class="section-line"></div>
   <div class="video-grid">
     <div class="video-card">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1013440927?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="https://player.vimeo.com/video/1044330739?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="sr1"><strong>Showreel FPV</strong>FPV · Cinématique</div>
+      <div class="video-label">Showreel FPV GoPro</div>
     </div>
     <div class="video-card">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1045665790?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="https://player.vimeo.com/video/1012655044?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="sr2"><strong>Showreel Drone</strong>Drone · Aérien</div>
+      <div class="video-label">FPV GoPro Showreel 2023</div>
     </div>
     <div class="video-card">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1012702143?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="https://player.vimeo.com/video/549449379?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="sr3"><strong>Sport & Action</strong>FPV · Tracking</div>
+      <div class="video-label">1mn ShowReel</div>
     </div>
     <div class="video-card">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1122195115?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="https://player.vimeo.com/video/1012654738?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="sr4"><strong>Cinématique</strong>Drone · 4K</div>
+      <div class="video-label">Action Showreel 2020</div>
     </div>
   </div>
 </section>
@@ -696,62 +610,66 @@
     <button type="button" class="filter-chip" data-filter="autres" onclick="filterRealisations('autres')" data-i18n="filter_autres">Autres</button>
   </div>
 
-  <p class="realisations-empty" id="realisations-empty" data-i18n="realisations_empty">Vidéos à venir pour ce client — dis-moi lesquelles associer.</p>
-
   <div class="video-grid">
-    <div class="video-card" data-client="autres">
+    <div class="video-card" data-client="lapland">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/652160973?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1013440927?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re1"><strong>Production</strong>FPV · Drone</div>
+      <div class="video-label">Lapland Ice Driving</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1044330739?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1197947893?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re2"><strong>Production</strong>FPV · Tracking</div>
+      <div class="video-label">The Goodwood Experience</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1035568075?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1045665790?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re3"><strong>Production</strong>Drone · Cinéma</div>
+      <div class="video-label">COMMENCAL BIKES TEMPO POWER — Hugo Frixtalon</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/860047977?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1122195115?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re4"><strong>Production</strong>FPV · Action</div>
+      <div class="video-label">BlackRock Real Estate Forum 2025</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1012654380?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/652160973?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re5"><strong>Production</strong>Drone · 4K</div>
+      <div class="video-label">A VIP Week End in Milano by IQOS</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1012655044?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1012654380?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re6"><strong>Production</strong>Drone · Aérien</div>
+      <div class="video-label">DJI Lyon</div>
+    </div>
+    <div class="video-card" data-client="decathlon">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/860047977?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+      <div class="video-label">Decathlon Snowboard 2024</div>
+    </div>
+    <div class="video-card" data-client="decathlon">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1035568075?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+      <div class="video-label">Decathlon Snowboard 2025</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/549449379?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/364469394?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re7"><strong>Production</strong>FPV · Sport</div>
+      <div class="video-label">Method Boat</div>
     </div>
-    <div class="video-card" data-client="autres">
+    <div class="video-card" data-client="decathlon">
       <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1012654738?title=0&byline=0&portrait=0" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1012669213?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
-      <div class="video-label" data-i18n-html="re8"><strong>Production</strong>Drone · Live</div>
-    </div>
-    <div class="video-card" data-client="autres">
-      <div class="video-embed">
-        <iframe src="https://player.vimeo.com/video/1012669213?title=0&byline=0&portrait=0" allowfullscreen></iframe>
-      </div>
-      <div class="video-label" data-i18n-html="re9"><strong>Production</strong>FPV · Cinématique</div>
+      <div class="video-label">Product Development, a collaboration with Decathlon</div>
     </div>
   </div>
 </section>
@@ -821,6 +739,9 @@
     <div class="brand-card" title="Decathlon">
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Decathlon_-_logo_%28France%2C_2024%29.svg?width=200" alt="Decathlon" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>DECATHLON</span>'">
     </div>
+    <div class="brand-card" title="Lapland Ice Driving">
+      <span class="brand-fallback">LAPLAND ICE DRIVING</span>
+    </div>
   </div>
 </section>
 
@@ -835,8 +756,8 @@
       <p data-i18n-html="about_p3">Basé dans les <strong>Alpes</strong>, je rayonne sur toute la France et à l'international. Mon terrain de jeu ? Les paysages de montagne, les zones urbaines complexes, les environnements où d'autres n'osent pas voler.</p>
     </div>
     <div class="about-stats">
-      <div class="stat-box"><div class="stat-num">8+</div><div class="stat-label" data-i18n="stat_years">Années d'expérience</div></div>
-      <div class="stat-box"><div class="stat-num">200+</div><div class="stat-label" data-i18n="stat_productions">Productions</div></div>
+      <div class="stat-box"><div class="stat-num">30</div><div class="stat-label" data-i18n="stat_years">Années d'expérience</div></div>
+      <div class="stat-box"><div class="stat-num">500</div><div class="stat-label" data-i18n="stat_productions">Réalisations</div></div>
       <div class="stat-box"><div class="stat-num">30+</div><div class="stat-label" data-i18n="stat_brands">Marques</div></div>
       <div class="stat-box"><div class="stat-num">4K+</div><div class="stat-label" data-i18n="stat_hours">Heures de vol</div></div>
     </div>
@@ -875,7 +796,7 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-inner">
-    <img src="assets/logo.svg" alt="Why Film" class="footer-logo" onclick="showSection('showreel'); return false;">
+    <img src="assets/logo.svg" alt="Why Film" class="footer-logo" onclick="showSection('accueil')">
 
     <div class="footer-center">
       <ul class="footer-links">
@@ -896,12 +817,11 @@
     nav_showreel: { fr: "Showreel", en: "Showreel" },
     nav_realisations: { fr: "Réalisations", en: "Work" },
     nav_services: { fr: "Services", en: "Services" },
-    nav_marques: { fr: "Marques", en: "Clients" },
+    nav_marques: { fr: "Ils nous font confiance", en: "Trusted By" },
     nav_apropos: { fr: "À propos", en: "About" },
     nav_contact: { fr: "Contact", en: "Contact" },
 
     hero_tagline: { fr: "Drone · FPV · Aerial Cinematography", en: "Drone · FPV · Aerial Cinematography" },
-    hero_scroll: { fr: "Scroll", en: "Scroll" },
 
     section_showreel_title: { fr: "Showreel", en: "Showreel" },
     section_realisations_title: { fr: "Réalisations", en: "Work" },
@@ -910,24 +830,8 @@
     section_apropos_title: { fr: "À propos", en: "About" },
     section_contact_title: { fr: "Contact", en: "Contact" },
 
-    sr1: { fr: "<strong>Showreel FPV</strong>FPV · Cinématique", en: "<strong>FPV Showreel</strong>FPV · Cinematic" },
-    sr2: { fr: "<strong>Showreel Drone</strong>Drone · Aérien", en: "<strong>Drone Showreel</strong>Drone · Aerial" },
-    sr3: { fr: "<strong>Sport & Action</strong>FPV · Tracking", en: "<strong>Sport & Action</strong>FPV · Tracking" },
-    sr4: { fr: "<strong>Cinématique</strong>Drone · 4K", en: "<strong>Cinematic</strong>Drone · 4K" },
-
     filter_tous: { fr: "Tous", en: "All" },
     filter_autres: { fr: "Autres", en: "Other" },
-    realisations_empty: { fr: "Vidéos à venir pour ce client — dis-moi lesquelles associer.", en: "Videos coming soon for this client — let me know which ones to link here." },
-
-    re1: { fr: "<strong>Production</strong>FPV · Drone", en: "<strong>Production</strong>FPV · Drone" },
-    re2: { fr: "<strong>Production</strong>FPV · Tracking", en: "<strong>Production</strong>FPV · Tracking" },
-    re3: { fr: "<strong>Production</strong>Drone · Cinéma", en: "<strong>Production</strong>Drone · Cinema" },
-    re4: { fr: "<strong>Production</strong>FPV · Action", en: "<strong>Production</strong>FPV · Action" },
-    re5: { fr: "<strong>Production</strong>Drone · 4K", en: "<strong>Production</strong>Drone · 4K" },
-    re6: { fr: "<strong>Production</strong>Drone · Aérien", en: "<strong>Production</strong>Drone · Aerial" },
-    re7: { fr: "<strong>Production</strong>FPV · Sport", en: "<strong>Production</strong>FPV · Sport" },
-    re8: { fr: "<strong>Production</strong>Drone · Live", en: "<strong>Production</strong>Drone · Live" },
-    re9: { fr: "<strong>Production</strong>FPV · Cinématique", en: "<strong>Production</strong>FPV · Cinematic" },
 
     svc1_name: { fr: "Production Réalisation : Publicité, Film", en: "Production: Advertising & Film" },
     svc1_desc: { fr: "Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.", en: "Full production for TV spots, web content, and music videos. Creative direction, filming, and post-production." },
@@ -949,7 +853,7 @@
     about_p3: { fr: "Basé dans les <strong>Alpes</strong>, je rayonne sur toute la France et à l'international. Mon terrain de jeu ? Les paysages de montagne, les zones urbaines complexes, les environnements où d'autres n'osent pas voler.", en: "Based in the <strong>French Alps</strong>, I work across France and internationally. My playground? Mountain landscapes, complex urban areas, environments where others don't dare fly." },
 
     stat_years: { fr: "Années d'expérience", en: "Years of experience" },
-    stat_productions: { fr: "Productions", en: "Productions" },
+    stat_productions: { fr: "Réalisations", en: "Productions" },
     stat_brands: { fr: "Marques", en: "Brands" },
     stat_hours: { fr: "Heures de vol", en: "Flight hours" },
 
@@ -983,7 +887,7 @@
     document.querySelectorAll('.lang-switch button').forEach(function (b) {
       b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
     });
-    try { localStorage.setItem('whyfilms_lang', lang); } catch (e) {}
+    try { localStorage.setItem('whyfilm_lang', lang); } catch (e) {}
   }
 
   function showSection(id) {
@@ -996,26 +900,22 @@
     var navLink = document.getElementById('nav-' + id);
     if (navLink) navLink.classList.add('active');
 
-    window.scrollTo({ top: document.querySelector('nav').offsetTop, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function filterRealisations(client) {
-    var cards = document.querySelectorAll('#realisations .video-card');
-    var visibleCount = 0;
-    cards.forEach(function (card) {
+    document.querySelectorAll('#realisations .video-card').forEach(function (card) {
       var show = (client === 'tous') || (card.getAttribute('data-client') === client);
       card.style.display = show ? '' : 'none';
-      if (show) visibleCount++;
     });
     document.querySelectorAll('#realisations .filter-chip').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-filter') === client);
     });
-    document.getElementById('realisations-empty').style.display = visibleCount === 0 ? 'block' : 'none';
   }
 
   (function initLang() {
     var saved = 'fr';
-    try { saved = localStorage.getItem('whyfilms_lang') || 'fr'; } catch (e) {}
+    try { saved = localStorage.getItem('whyfilm_lang') || 'fr'; } catch (e) {}
     applyLang(saved);
   })();
 </script>
