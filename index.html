@@ -275,6 +275,14 @@
     color: var(--text);
   }
 
+  .video-kicker {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
   /* ─── RÉALISATIONS FILTERS ─── */
   .filter-row {
     display: flex;
@@ -659,7 +667,7 @@
 
 <!-- ─── ACCUEIL ─── -->
 <section id="accueil" class="active">
-  <p class="accueil-tagline" data-i18n="hero_tagline">Drone · FPV · Aerial Cinematography</p>
+  <p class="accueil-tagline" data-i18n="hero_tagline">Film Maker · FPV · Drone</p>
   <div class="featured-video">
     <div class="featured-embed">
       <iframe src="https://player.vimeo.com/video/1012702143?title=0&byline=0&portrait=0" allowfullscreen allow="autoplay; fullscreen"></iframe>
@@ -787,7 +795,62 @@
 <section id="aerial">
   <h2 class="section-title" data-i18n="section_aerial_title">Aerial Cinematography</h2>
   <div class="section-line"></div>
-  <p class="page-empty" data-i18n="aerial_empty">Vidéos à venir.</p>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/3lZXf10qcyM?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="Go Full Throttle with the LINE Optic"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Almo Film X Line Ski</span>Go Full Throttle with the LINE Optic</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/AA5DgSKG1Qg?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="DEFY THE NORM"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Almo Film X Ekoi</span>Defy The Norm — English version</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/dXFAO7KlZQI?feature=oembed&start=67" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="REBORN - EDGAR BRIOLE"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Commencal Edgar Briole</span>Reborn — Edgar Briole</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/JLrqOXJNO0Q?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="THE ART OF MOVEMENT - Angle 3"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Commencal — The Art of Movement</span>The Art of Movement — Angle 3</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/_smOoXDuyJU?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="Candide Thovex - Les Tufs"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Candide</span>Candide Thovex — Les Tufs</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/ux08B6U6upw?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="Candide Thovex - L'Aiguille percée"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Candide</span>Candide Thovex — L'Aiguille percée</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/p-mZTR1glq4?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="Candide Thovex - Pretty tight"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Candide</span>Candide Thovex — Pretty Tight</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/7XCZf6jUnOQ?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="Candide Thovex - Yellow pow"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Candide</span>Candide Thovex — Yellow Pow</div>
+    </div>
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/0Po24ujWKlQ?feature=oembed" allowfullscreen allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" title="Candide Thovex - Some laps in Crans-Montana Park"></iframe>
+      </div>
+      <div class="video-label"><span class="video-kicker">Candide</span>Candide Thovex — Some Laps in Crans-Montana Park</div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── SERVICES ─── -->
@@ -952,13 +1015,12 @@
     nav_apropos: { fr: "À propos", en: "About" },
     nav_contact: { fr: "Contact", en: "Contact" },
 
-    hero_tagline: { fr: "Drone · FPV · Aerial Cinematography", en: "Drone · FPV · Aerial Cinematography" },
+    hero_tagline: { fr: "Film Maker · FPV · Drone", en: "Film Maker · FPV · Drone" },
     footer_baseline: { fr: "Drone & FPV — Film Maker", en: "Drone & FPV — Film Maker" },
 
     section_showreel_title: { fr: "Showreel", en: "Showreel" },
     section_realisations_title: { fr: "Réalisations", en: "Work" },
     section_aerial_title: { fr: "Aerial Cinematography", en: "Aerial Cinematography" },
-    aerial_empty: { fr: "Vidéos à venir.", en: "Videos coming soon." },
     section_services_title: { fr: "Services", en: "Services" },
     section_marques_title: { fr: "Ils nous font confiance", en: "Trusted By" },
     section_apropos_title: { fr: "À propos", en: "About" },
