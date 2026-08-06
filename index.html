@@ -56,11 +56,17 @@
   }
 
   .nav-logo {
-    height: 52px;
-    padding: 8px 0;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 1.85rem;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    padding: 0.6rem 0;
     margin-right: 2.5rem;
     flex-shrink: 0;
     cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
   }
 
   .nav-links {
@@ -371,6 +377,31 @@
   .service-card:hover { border-color: rgba(212,160,23,0.3); }
   .service-card:hover::before { transform: scaleX(1); }
 
+  .service-card.is-link { cursor: pointer; }
+  .service-card.is-link:hover { transform: translateY(-3px); }
+  .service-card.is-link:hover .service-name { color: var(--gold-light); }
+
+  .service-link-hint {
+    margin-top: 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.75;
+  }
+
+  .page-empty {
+    color: #bbb;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.08em;
+    font-size: 1rem;
+    padding: 3rem 1rem;
+    border: 1px dashed rgba(255,255,255,0.18);
+    text-align: center;
+    background: rgba(10,10,10,0.4);
+  }
+
   .service-icon { font-size: 2rem; margin-bottom: 1rem; }
 
   .service-name {
@@ -503,33 +534,38 @@
 
   .footer-logo {
     display: block;
-    width: 100%;
-    height: auto;
-    opacity: 0.85;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    opacity: 0.9;
     cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
   }
 
   .footer-brand {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    width: 210px;
+    align-items: stretch;
+    width: fit-content;
+    gap: 0.35rem;
     flex-shrink: 0;
   }
 
   .footer-baseline {
+    display: block;
     width: 100%;
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 300;
-    font-size: 0.62rem;
-    letter-spacing: 0.02em;
+    font-weight: 400;
+    font-size: 0.74rem;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
     color: var(--gold);
-    opacity: 0.85;
-    text-align: justify;
-    text-align-last: justify;
-    -moz-text-align-last: justify;
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .footer-center {
@@ -582,8 +618,8 @@
   .footer-copy { font-size: 0.75rem; color: #444; letter-spacing: 0.1em; }
 
   @media (max-width: 1000px) {
-    .footer-brand { width: 165px; }
-    .footer-baseline { font-size: 0.54rem; }
+    .footer-logo { font-size: 1.9rem; }
+    .footer-baseline { font-size: 0.638rem; }
     .footer-links { gap: 0.7rem; }
     .footer-links a { font-size: 0.6rem; letter-spacing: 0.05em; }
     .footer-contact { font-size: 0.72rem; letter-spacing: 0.05em; }
@@ -603,10 +639,11 @@
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-inner">
-    <img src="assets/logo.svg" alt="Why Film" class="nav-logo" onclick="showSection('accueil')">
+    <div class="nav-logo" onclick="showSection('accueil')">WHY FILM</div>
     <ul class="nav-links">
       <li><a href="#" onclick="showSection('showreel'); return false;" id="nav-showreel" data-i18n="nav_showreel">Showreel</a></li>
       <li><a href="#" onclick="showSection('realisations'); return false;" id="nav-realisations" data-i18n="nav_realisations">Réalisations</a></li>
+      <li><a href="#" onclick="showSection('aerial'); return false;" id="nav-aerial" data-i18n="nav_aerial">Aerial Cinematography</a></li>
       <li><a href="#" onclick="showSection('services'); return false;" id="nav-services" data-i18n="nav_services">Services</a></li>
       <li><a href="#" onclick="showSection('marques'); return false;" id="nav-marques" data-i18n="nav_marques">Ils nous font confiance</a></li>
       <li><a href="#" onclick="showSection('apropos'); return false;" id="nav-apropos" data-i18n="nav_apropos">À propos</a></li>
@@ -678,6 +715,7 @@
     <button type="button" class="filter-chip active" data-filter="tous" onclick="filterRealisations('tous')" data-i18n="filter_tous">Tous</button>
     <button type="button" class="filter-chip" data-filter="decathlon" onclick="filterRealisations('decathlon')">Decathlon</button>
     <button type="button" class="filter-chip" data-filter="lapland" onclick="filterRealisations('lapland')">Lapland Ice Driving</button>
+    <button type="button" class="filter-chip" data-filter="immobilier" onclick="filterRealisations('immobilier')" data-i18n="filter_immobilier">Immobilier</button>
     <button type="button" class="filter-chip" data-filter="autres" onclick="filterRealisations('autres')" data-i18n="filter_autres">Autres</button>
   </div>
 
@@ -700,7 +738,7 @@
       </div>
       <div class="video-label">COMMENCAL BIKES TEMPO POWER — Hugo Frixtalon</div>
     </div>
-    <div class="video-card" data-client="autres">
+    <div class="video-card" data-client="immobilier">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1122195115?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
@@ -745,25 +783,35 @@
   </div>
 </section>
 
+<!-- ─── AERIAL CINEMATOGRAPHY ─── -->
+<section id="aerial">
+  <h2 class="section-title" data-i18n="section_aerial_title">Aerial Cinematography</h2>
+  <div class="section-line"></div>
+  <p class="page-empty" data-i18n="aerial_empty">Vidéos à venir.</p>
+</section>
+
 <!-- ─── SERVICES ─── -->
 <section id="services">
   <h2 class="section-title" data-i18n="section_services_title">Services</h2>
   <div class="section-line"></div>
   <div class="services-grid">
-    <div class="service-card">
+    <div class="service-card is-link" onclick="showSection('realisations')">
       <div class="service-icon">🎬</div>
       <div class="service-name" data-i18n="svc1_name">Production Réalisation : Publicité, Film</div>
       <p class="service-desc" data-i18n="svc1_desc">Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.</p>
+      <p class="service-link-hint" data-i18n="link_realisations">Voir les réalisations →</p>
     </div>
-    <div class="service-card">
+    <div class="service-card is-link" onclick="showSection('aerial')">
       <div class="service-icon">⚡</div>
       <div class="service-name" data-i18n="svc2_name">Drone FPV</div>
       <p class="service-desc" data-i18n="svc2_desc">Vols immersifs à grande vitesse, passages en FPV cinématiques. Des plans impossibles à obtenir autrement — intérieurs, extérieurs, tracking dynamique.</p>
+      <p class="service-link-hint" data-i18n="link_aerial">Voir Aerial Cinematography →</p>
     </div>
-    <div class="service-card">
+    <div class="service-card is-link" onclick="showSection('aerial')">
       <div class="service-icon">🚁</div>
       <div class="service-name" data-i18n="svc3_name">Drone</div>
       <p class="service-desc" data-i18n="svc3_desc">Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.</p>
+      <p class="service-link-hint" data-i18n="link_aerial">Voir Aerial Cinematography →</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🏆</div>
@@ -775,10 +823,11 @@
       <div class="service-name" data-i18n="svc5_name">BTP & Industrie</div>
       <p class="service-desc" data-i18n="svc5_desc">Inspection de chantiers, relevés topographiques, suivi de projets. Rapports visuels professionnels.</p>
     </div>
-    <div class="service-card">
+    <div class="service-card is-link" onclick="goRealisations('immobilier')">
       <div class="service-icon">🏠</div>
       <div class="service-name" data-i18n="svc6_name">Immobilier</div>
       <p class="service-desc" data-i18n="svc6_desc">Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.</p>
+      <p class="service-link-hint" data-i18n="link_immobilier">Voir la réalisation Immobilier →</p>
     </div>
   </div>
 </section>
@@ -868,7 +917,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="assets/logo.svg" alt="Why Film" class="footer-logo" onclick="showSection('accueil')">
+      <div class="footer-logo" onclick="showSection('accueil')">WHY FILM</div>
       <p class="footer-baseline" data-i18n="footer_baseline">Drone &amp; FPV — Film Maker</p>
     </div>
 
@@ -876,6 +925,7 @@
       <ul class="footer-links">
         <li><a href="#" onclick="showSection('showreel'); return false;" data-i18n="nav_showreel">Showreel</a></li>
         <li><a href="#" onclick="showSection('realisations'); return false;" data-i18n="nav_realisations">Réalisations</a></li>
+        <li><a href="#" onclick="showSection('aerial'); return false;" data-i18n="nav_aerial">Aerial Cinematography</a></li>
         <li><a href="#" onclick="showSection('services'); return false;" data-i18n="nav_services">Services</a></li>
         <li><a href="#" onclick="showSection('marques'); return false;" data-i18n="nav_marques">Ils nous font confiance</a></li>
         <li><a href="#" onclick="showSection('apropos'); return false;" data-i18n="nav_apropos">À propos</a></li>
@@ -896,6 +946,7 @@
   var I18N = {
     nav_showreel: { fr: "Showreel", en: "Showreel" },
     nav_realisations: { fr: "Réalisations", en: "Work" },
+    nav_aerial: { fr: "Aerial Cinematography", en: "Aerial Cinematography" },
     nav_services: { fr: "Services", en: "Services" },
     nav_marques: { fr: "Ils nous font confiance", en: "Trusted By" },
     nav_apropos: { fr: "À propos", en: "About" },
@@ -906,13 +957,20 @@
 
     section_showreel_title: { fr: "Showreel", en: "Showreel" },
     section_realisations_title: { fr: "Réalisations", en: "Work" },
+    section_aerial_title: { fr: "Aerial Cinematography", en: "Aerial Cinematography" },
+    aerial_empty: { fr: "Vidéos à venir.", en: "Videos coming soon." },
     section_services_title: { fr: "Services", en: "Services" },
     section_marques_title: { fr: "Ils nous font confiance", en: "Trusted By" },
     section_apropos_title: { fr: "À propos", en: "About" },
     section_contact_title: { fr: "Contact", en: "Contact" },
 
     filter_tous: { fr: "Tous", en: "All" },
+    filter_immobilier: { fr: "Immobilier", en: "Real Estate" },
     filter_autres: { fr: "Autres", en: "Other" },
+
+    link_realisations: { fr: "Voir les réalisations →", en: "View the work →" },
+    link_aerial: { fr: "Voir Aerial Cinematography →", en: "View Aerial Cinematography →" },
+    link_immobilier: { fr: "Voir la réalisation Immobilier →", en: "View the Real Estate work →" },
 
     svc1_name: { fr: "Production Réalisation : Publicité, Film", en: "Production: Advertising & Film" },
     svc1_desc: { fr: "Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.", en: "Full production for TV spots, web content, and music videos. Creative direction, filming, and post-production." },
@@ -982,6 +1040,11 @@
     if (navLink) navLink.classList.add('active');
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goRealisations(client) {
+    showSection('realisations');
+    filterRealisations(client);
   }
 
   function filterRealisations(client) {
