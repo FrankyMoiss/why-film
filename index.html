@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why Films — Drone & FPV</title>
-<meta name="description" content="Why Films — Réalisation drone & FPV : publicités, clips, événements sportifs, immobilier. Basé dans les Alpes, disponible France & international.">
+<title>Why Film — Drone & FPV</title>
+<meta name="description" content="Why Film — Réalisation drone & FPV : publicités, clips, événements sportifs, immobilier. Basé dans les Alpes, disponible France & international.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚁</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,7 +22,14 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--dark);
+    background-image:
+      linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.3) 40%, rgba(5,5,5,0.85) 100%),
+      url('assets/contact-bg.png');
+    background-position: center, center 55%;
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-color: var(--dark);
     color: var(--text);
     font-family: 'Barlow', sans-serif;
     font-weight: 300;
@@ -52,9 +59,13 @@
 
   .hero-bg {
     position: absolute; inset: 0;
-    background:
+    background-image:
       radial-gradient(ellipse at 50% 30%, rgba(212,160,23,0.18) 0%, transparent 60%),
-      linear-gradient(180deg, #0A0A0A 0%, #1a1000 40%, #0A0A0A 100%);
+      linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(26,16,0,0.3) 40%, rgba(10,10,10,0.88) 100%),
+      url('assets/contact-bg.png');
+    background-position: center, center, center 50%;
+    background-size: cover, cover, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat;
   }
 
   .hero-bg::after {
@@ -69,6 +80,7 @@
     position: relative;
     width: min(340px, 70vw);
     opacity: 0;
+    cursor: pointer;
     animation: fadeUp 1.2s ease forwards 0.3s;
   }
 
@@ -144,6 +156,7 @@
     padding: 8px 0;
     margin-right: 3rem;
     flex-shrink: 0;
+    cursor: pointer;
   }
 
   .nav-links {
@@ -151,6 +164,7 @@
     list-style: none;
     gap: 0;
     flex: 1;
+    flex-wrap: wrap;
   }
 
   .nav-links li a {
@@ -183,6 +197,50 @@
   .nav-links li a:hover::after,
   .nav-links li a.active::after { transform: scaleX(1); }
 
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .lang-switch button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0.3rem 0.3rem;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .lang-switch button.active { color: var(--gold); font-weight: 600; }
+  .lang-switch span { color: #444; }
+
+  @media (max-width: 1100px) {
+    .nav-inner { padding: 0 1rem; }
+    .nav-logo { margin-right: 1.2rem; height: 44px; }
+    .nav-links li a { padding: 1rem 0.7rem; letter-spacing: 0.12em; font-size: 0.75rem; }
+    .nav-links li a::after { left: 0.7rem; right: 0.7rem; }
+  }
+
+  @media (max-width: 780px) {
+    .nav-inner { flex-wrap: wrap; padding: 0.6rem 1rem; gap: 0.5rem; }
+    .nav-logo { margin-right: auto; }
+    .nav-links { order: 3; width: 100%; justify-content: center; }
+    .nav-links li a { padding: 0.6rem 0.6rem; font-size: 0.7rem; letter-spacing: 0.1em; }
+    .nav-links li a::after { left: 0.6rem; right: 0.6rem; }
+    .lang-switch { margin-left: 0; }
+    section { padding: 3rem 1.2rem; }
+  }
+
   /* ─── SECTIONS ─── */
   section {
     display: none;
@@ -200,6 +258,7 @@
     letter-spacing: 0.04em;
     color: var(--text);
     margin-bottom: 0.3rem;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.85);
   }
 
   .section-line {
@@ -264,6 +323,42 @@
     letter-spacing: 0.05em;
   }
 
+  /* ─── RÉALISATIONS FILTERS ─── */
+  .filter-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-chip {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--muted);
+    padding: 0.55rem 1.3rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-chip:hover { border-color: rgba(212,160,23,0.4); color: var(--text); }
+  .filter-chip.active { background: var(--gold); border-color: var(--gold); color: #000; }
+
+  .realisations-empty {
+    display: none;
+    color: #aaa;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    padding: 2.5rem 1rem;
+    border: 1px dashed rgba(255,255,255,0.18);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
   /* ─── ABOUT ─── */
   .about-layout {
     display: grid;
@@ -276,12 +371,13 @@
 
   .about-text p {
     line-height: 1.8;
-    color: #bbb;
+    color: #ddd;
     margin-bottom: 1.2rem;
     font-size: 1rem;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
   }
 
-  .about-text p strong { color: var(--gold); font-weight: 500; }
+  .about-text p strong { color: var(--gold-light); font-weight: 500; }
 
   .about-stats {
     display: grid;
@@ -357,12 +453,13 @@
 
   /* ─── MARQUES ─── */
   .brands-intro {
-    color: #888;
+    color: #aaa;
     margin-bottom: 3rem;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-family: 'Barlow Condensed', sans-serif;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
   }
 
   .brands-grid {
@@ -401,13 +498,8 @@
   /* ─── CONTACT ─── */
   #contact {
     position: relative;
-    background:
-      linear-gradient(180deg, rgba(5,5,5,0.5) 0%, rgba(5,5,5,0.25) 40%, rgba(5,5,5,0.8) 100%),
-      url('assets/contact-bg.png') center 55% / cover no-repeat;
     border-top: 1px solid rgba(212,160,23,0.12);
   }
-
-  #contact .section-title { text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
 
   .contact-layout {
     display: grid;
@@ -456,8 +548,9 @@
 
   .form-note {
     font-size: 0.75rem;
-    color: #555;
+    color: #999;
     letter-spacing: 0.03em;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
   }
 
   /* ─── FOOTER ─── */
@@ -480,6 +573,7 @@
   .footer-logo {
     height: 60px;
     opacity: 0.85;
+    cursor: pointer;
   }
 
   .footer-center {
@@ -524,15 +618,15 @@
 <body>
 
 <!-- ─── BANDO ─── -->
-<img src="assets/bando.svg" alt="Why Films FPV" class="bando">
+<img src="assets/bando.svg" alt="Why Film FPV" class="bando">
 
 <!-- ─── HERO ─── -->
 <div class="hero" id="hero">
   <div class="hero-bg"></div>
-  <img src="assets/logo.svg" alt="Why Films" class="hero-logo-img">
-  <p class="hero-tagline">Drone · FPV · Aerial Cinematography</p>
+  <img src="assets/logo.svg" alt="Why Film" class="hero-logo-img" onclick="showSection('showreel'); return false;">
+  <p class="hero-tagline" data-i18n="hero_tagline">Drone · FPV · Aerial Cinematography</p>
   <div class="hero-scroll">
-    <span>Scroll</span>
+    <span data-i18n="hero_scroll">Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </div>
@@ -540,155 +634,170 @@
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-inner">
-    <img src="assets/logo.svg" alt="Why Films" class="nav-logo">
+    <img src="assets/logo.svg" alt="Why Film" class="nav-logo" onclick="showSection('showreel'); return false;">
     <ul class="nav-links">
-      <li><a href="#" onclick="showSection('showreel'); return false;" class="active" id="nav-showreel">Showreel</a></li>
-      <li><a href="#" onclick="showSection('portfolio'); return false;" id="nav-portfolio">Portfolio</a></li>
-      <li><a href="#" onclick="showSection('services'); return false;" id="nav-services">Services</a></li>
-      <li><a href="#" onclick="showSection('marques'); return false;" id="nav-marques">Marques</a></li>
-      <li><a href="#" onclick="showSection('apropos'); return false;" id="nav-apropos">À propos</a></li>
-      <li><a href="#" onclick="showSection('contact'); return false;" id="nav-contact">Contact</a></li>
+      <li><a href="#" onclick="showSection('showreel'); return false;" class="active" id="nav-showreel" data-i18n="nav_showreel">Showreel</a></li>
+      <li><a href="#" onclick="showSection('realisations'); return false;" id="nav-realisations" data-i18n="nav_realisations">Réalisations</a></li>
+      <li><a href="#" onclick="showSection('services'); return false;" id="nav-services" data-i18n="nav_services">Services</a></li>
+      <li><a href="#" onclick="showSection('marques'); return false;" id="nav-marques" data-i18n="nav_marques">Marques</a></li>
+      <li><a href="#" onclick="showSection('apropos'); return false;" id="nav-apropos" data-i18n="nav_apropos">À propos</a></li>
+      <li><a href="#" onclick="showSection('contact'); return false;" id="nav-contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
+    <div class="lang-switch">
+      <button type="button" data-lang-btn="fr" class="active" onclick="applyLang('fr')">FR</button>
+      <span>/</span>
+      <button type="button" data-lang-btn="en" onclick="applyLang('en')">EN</button>
+    </div>
   </div>
 </nav>
 
 <!-- ─── SHOWREEL ─── -->
 <section id="showreel" class="active">
-  <h2 class="section-title">Showreel</h2>
+  <h2 class="section-title" data-i18n="section_showreel_title">Showreel</h2>
   <div class="section-line"></div>
   <div class="video-grid">
     <div class="video-card">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1013440927?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
       </div>
-      <div class="video-label"><strong>Showreel FPV</strong>FPV · Cinématique</div>
+      <div class="video-label" data-i18n-html="sr1"><strong>Showreel FPV</strong>FPV · Cinématique</div>
     </div>
     <div class="video-card">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1045665790?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
       </div>
-      <div class="video-label"><strong>Showreel Drone</strong>Drone · Aérien</div>
+      <div class="video-label" data-i18n-html="sr2"><strong>Showreel Drone</strong>Drone · Aérien</div>
     </div>
     <div class="video-card">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1012702143?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
       </div>
-      <div class="video-label"><strong>Sport & Action</strong>FPV · Tracking</div>
+      <div class="video-label" data-i18n-html="sr3"><strong>Sport & Action</strong>FPV · Tracking</div>
     </div>
     <div class="video-card">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1122195115?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
       </div>
-      <div class="video-label"><strong>Cinématique</strong>Drone · 4K</div>
+      <div class="video-label" data-i18n-html="sr4"><strong>Cinématique</strong>Drone · 4K</div>
     </div>
   </div>
 </section>
 
-<!-- ─── PORTFOLIO ─── -->
-<section id="portfolio">
-  <h2 class="section-title">Portfolio</h2>
+<!-- ─── RÉALISATIONS ─── -->
+<section id="realisations">
+  <h2 class="section-title" data-i18n="section_realisations_title">Réalisations</h2>
   <div class="section-line"></div>
+
+  <div class="filter-row">
+    <button type="button" class="filter-chip active" data-filter="tous" onclick="filterRealisations('tous')" data-i18n="filter_tous">Tous</button>
+    <button type="button" class="filter-chip" data-filter="decathlon" onclick="filterRealisations('decathlon')">Decathlon</button>
+    <button type="button" class="filter-chip" data-filter="lapland" onclick="filterRealisations('lapland')">Lapland Ice Driving</button>
+    <button type="button" class="filter-chip" data-filter="autres" onclick="filterRealisations('autres')" data-i18n="filter_autres">Autres</button>
+  </div>
+
+  <p class="realisations-empty" id="realisations-empty" data-i18n="realisations_empty">Vidéos à venir pour ce client — dis-moi lesquelles associer.</p>
+
   <div class="video-grid">
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/652160973?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>FPV · Drone</div>
+      <div class="video-label" data-i18n-html="re1"><strong>Production</strong>FPV · Drone</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1044330739?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>FPV · Tracking</div>
+      <div class="video-label" data-i18n-html="re2"><strong>Production</strong>FPV · Tracking</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1035568075?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>Drone · Cinéma</div>
+      <div class="video-label" data-i18n-html="re3"><strong>Production</strong>Drone · Cinéma</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/860047977?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>FPV · Action</div>
+      <div class="video-label" data-i18n-html="re4"><strong>Production</strong>FPV · Action</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1012654380?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>Drone · 4K</div>
+      <div class="video-label" data-i18n-html="re5"><strong>Production</strong>Drone · 4K</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1012655044?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>Drone · Aérien</div>
+      <div class="video-label" data-i18n-html="re6"><strong>Production</strong>Drone · Aérien</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/549449379?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>FPV · Sport</div>
+      <div class="video-label" data-i18n-html="re7"><strong>Production</strong>FPV · Sport</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1012654738?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>Drone · Live</div>
+      <div class="video-label" data-i18n-html="re8"><strong>Production</strong>Drone · Live</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" data-client="autres">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1012669213?title=0&byline=0&portrait=0" allowfullscreen></iframe>
       </div>
-      <div class="video-label"><strong>Production</strong>FPV · Cinématique</div>
+      <div class="video-label" data-i18n-html="re9"><strong>Production</strong>FPV · Cinématique</div>
     </div>
   </div>
 </section>
 
 <!-- ─── SERVICES ─── -->
 <section id="services">
-  <h2 class="section-title">Services</h2>
+  <h2 class="section-title" data-i18n="section_services_title">Services</h2>
   <div class="section-line"></div>
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-icon">🚁</div>
-      <div class="service-name">Drone</div>
-      <p class="service-desc">Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.</p>
+      <div class="service-icon">🎬</div>
+      <div class="service-name" data-i18n="svc1_name">Production Réalisation : Publicité, Film</div>
+      <p class="service-desc" data-i18n="svc1_desc">Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">⚡</div>
-      <div class="service-name">Drone FPV</div>
-      <p class="service-desc">Vols immersifs à grande vitesse, passages en FPV cinématiques. Des plans impossibles à obtenir autrement — intérieurs, extérieurs, tracking dynamique.</p>
+      <div class="service-name" data-i18n="svc2_name">Drone FPV</div>
+      <p class="service-desc" data-i18n="svc2_desc">Vols immersifs à grande vitesse, passages en FPV cinématiques. Des plans impossibles à obtenir autrement — intérieurs, extérieurs, tracking dynamique.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">🎬</div>
-      <div class="service-name">Publicité & Clip</div>
-      <p class="service-desc">Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.</p>
+      <div class="service-icon">🚁</div>
+      <div class="service-name" data-i18n="svc3_name">Drone</div>
+      <p class="service-desc" data-i18n="svc3_desc">Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🏆</div>
-      <div class="service-name">Sport & Événement</div>
-      <p class="service-desc">Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.</p>
+      <div class="service-name" data-i18n="svc4_name">Sport & Événement</div>
+      <p class="service-desc" data-i18n="svc4_desc">Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🏗</div>
-      <div class="service-name">BTP & Industrie</div>
-      <p class="service-desc">Inspection de chantiers, relevés topographiques, suivi de projets. Rapports visuels professionnels.</p>
+      <div class="service-name" data-i18n="svc5_name">BTP & Industrie</div>
+      <p class="service-desc" data-i18n="svc5_desc">Inspection de chantiers, relevés topographiques, suivi de projets. Rapports visuels professionnels.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🏠</div>
-      <div class="service-name">Immobilier</div>
-      <p class="service-desc">Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.</p>
+      <div class="service-name" data-i18n="svc6_name">Immobilier</div>
+      <p class="service-desc" data-i18n="svc6_desc">Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.</p>
     </div>
   </div>
 </section>
 
 <!-- ─── MARQUES ─── -->
 <section id="marques">
-  <h2 class="section-title">Ils nous font confiance</h2>
+  <h2 class="section-title" data-i18n="section_marques_title">Ils nous font confiance</h2>
   <div class="section-line"></div>
-  <p class="brands-intro">Marques & partenaires</p>
+  <p class="brands-intro" data-i18n="brands_intro">Marques & partenaires</p>
   <div class="brands-grid">
     <div class="brand-card" title="Nike">
       <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo_NIKE.svg?width=200" alt="Nike" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>NIKE</span>'">
@@ -716,48 +825,48 @@
 
 <!-- ─── À PROPOS ─── -->
 <section id="apropos">
-  <h2 class="section-title">À propos</h2>
+  <h2 class="section-title" data-i18n="section_apropos_title">À propos</h2>
   <div class="section-line"></div>
   <div class="about-layout">
     <div class="about-text">
-      <p><strong>Why Films</strong>, c'est une vision singulière du mouvement. Né d'une passion pour les images qui dépassent les limites du regard humain, notre travail explore l'espace entre le sol et le ciel — là où la caméra devient oiseau, bolide, ou ombre rasante.</p>
-      <p>Opérateur drone certifié et pilote FPV, j'interviens sur des productions exigeantes : <strong>publicités, clips musicaux, événements sportifs</strong>, longs-métrages et documentaires. Chaque vol est une chorégraphie millimétrée au service de l'émotion.</p>
-      <p>Basé dans les <strong>Alpes</strong>, je rayonne sur toute la France et à l'international. Mon terrain de jeu ? Les paysages de montagne, les zones urbaines complexes, les environnements où d'autres n'osent pas voler.</p>
+      <p data-i18n-html="about_p1"><strong>Why Film</strong>, c'est une vision singulière du mouvement. Né d'une passion pour les images qui dépassent les limites du regard humain, notre travail explore l'espace entre le sol et le ciel — là où la caméra devient oiseau, bolide, ou ombre rasante.</p>
+      <p data-i18n-html="about_p2">Opérateur drone certifié et pilote FPV, j'interviens sur des productions exigeantes : <strong>publicités, clips musicaux, événements sportifs</strong>, longs-métrages et documentaires. Chaque vol est une chorégraphie millimétrée au service de l'émotion.</p>
+      <p data-i18n-html="about_p3">Basé dans les <strong>Alpes</strong>, je rayonne sur toute la France et à l'international. Mon terrain de jeu ? Les paysages de montagne, les zones urbaines complexes, les environnements où d'autres n'osent pas voler.</p>
     </div>
     <div class="about-stats">
-      <div class="stat-box"><div class="stat-num">8+</div><div class="stat-label">Années d'expérience</div></div>
-      <div class="stat-box"><div class="stat-num">200+</div><div class="stat-label">Productions</div></div>
-      <div class="stat-box"><div class="stat-num">30+</div><div class="stat-label">Marques</div></div>
-      <div class="stat-box"><div class="stat-num">4K+</div><div class="stat-label">Heures de vol</div></div>
+      <div class="stat-box"><div class="stat-num">8+</div><div class="stat-label" data-i18n="stat_years">Années d'expérience</div></div>
+      <div class="stat-box"><div class="stat-num">200+</div><div class="stat-label" data-i18n="stat_productions">Productions</div></div>
+      <div class="stat-box"><div class="stat-num">30+</div><div class="stat-label" data-i18n="stat_brands">Marques</div></div>
+      <div class="stat-box"><div class="stat-num">4K+</div><div class="stat-label" data-i18n="stat_hours">Heures de vol</div></div>
     </div>
   </div>
 </section>
 
 <!-- ─── CONTACT ─── -->
 <section id="contact">
-  <h2 class="section-title">Contact</h2>
+  <h2 class="section-title" data-i18n="section_contact_title">Contact</h2>
   <div class="section-line"></div>
   <div class="contact-layout">
     <div class="contact-info">
-      <p>Un projet en tête ? Une production à venir ?<br>Parlons-en.</p>
+      <p data-i18n-html="contact_intro">Un projet en tête ? Une production à venir ?<br>Parlons-en.</p>
       <br>
       <p>📧 <a href="mailto:frankymoiss@gmail.com">frankymoiss@gmail.com</a></p>
       <p>📱 <a href="tel:+33609973911">+33 6 09 97 39 11</a></p>
-      <p>📍 Rhône-Alpes, France<br><span style="color:#aaa; text-shadow:0 1px 4px rgba(0,0,0,0.7)">Déplacements France & International</span></p>
+      <p data-i18n-html="contact_location">📍 Rhône-Alpes, France<br><span style="color:#aaa; text-shadow:0 1px 4px rgba(0,0,0,0.7)">Déplacements France & International</span></p>
       <br>
       <p><a href="https://vimeo.com/frankymoiss" target="_blank" rel="noopener" style="color:var(--muted)">Vimeo</a> &nbsp;·&nbsp; <a href="https://instagram.com/frankymoiss" target="_blank" rel="noopener" style="color:var(--muted)">Instagram</a></p>
     </div>
     <form class="contact-form" action="https://formsubmit.co/frankymoiss@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Nouveau message — Why Films">
+      <input type="hidden" name="_subject" value="Nouveau message — Why Film">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none">
-      <input class="form-input" type="text" name="name" placeholder="Nom" required>
-      <input class="form-input" type="email" name="email" placeholder="Email" required>
-      <input class="form-input" type="text" name="subject" placeholder="Sujet / Type de projet">
-      <textarea class="form-input" name="message" placeholder="Décrivez votre projet..." required></textarea>
-      <button class="btn-send" type="submit">Envoyer le message</button>
-      <p class="form-note">Premier envoi : un email de confirmation FormSubmit sera reçu, il faut cliquer une fois pour activer la réception des messages.</p>
+      <input class="form-input" type="text" name="name" data-i18n-placeholder="form_name_ph" placeholder="Nom" required>
+      <input class="form-input" type="email" name="email" data-i18n-placeholder="form_email_ph" placeholder="Email" required>
+      <input class="form-input" type="text" name="subject" data-i18n-placeholder="form_subject_ph" placeholder="Sujet / Type de projet">
+      <textarea class="form-input" name="message" data-i18n-placeholder="form_message_ph" placeholder="Décrivez votre projet..." required></textarea>
+      <button class="btn-send" type="submit" data-i18n="form_btn">Envoyer le message</button>
+      <p class="form-note" data-i18n="form_note">Premier envoi : un email de confirmation FormSubmit sera reçu, il faut cliquer une fois pour activer la réception des messages.</p>
     </form>
   </div>
 </section>
@@ -765,16 +874,16 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-inner">
-    <img src="assets/logo.svg" alt="Why Films" class="footer-logo">
+    <img src="assets/logo.svg" alt="Why Film" class="footer-logo" onclick="showSection('showreel'); return false;">
 
     <div class="footer-center">
       <ul class="footer-links">
-        <li><a href="#" onclick="showSection('showreel'); return false;">Showreel</a></li>
-        <li><a href="#" onclick="showSection('portfolio'); return false;">Portfolio</a></li>
-        <li><a href="#" onclick="showSection('services'); return false;">Services</a></li>
-        <li><a href="#" onclick="showSection('contact'); return false;">Contact</a></li>
+        <li><a href="#" onclick="showSection('showreel'); return false;" data-i18n="nav_showreel">Showreel</a></li>
+        <li><a href="#" onclick="showSection('realisations'); return false;" data-i18n="nav_realisations">Réalisations</a></li>
+        <li><a href="#" onclick="showSection('services'); return false;" data-i18n="nav_services">Services</a></li>
+        <li><a href="#" onclick="showSection('contact'); return false;" data-i18n="nav_contact">Contact</a></li>
       </ul>
-      <p class="footer-copy">© 2026 Why Films — Tous droits réservés</p>
+      <p class="footer-copy" data-i18n="footer_copy">© 2026 Why Film — Tous droits réservés</p>
     </div>
 
     <img src="assets/signature.svg" alt="FrankyMoiss FPV" class="footer-signature">
@@ -782,6 +891,100 @@
 </footer>
 
 <script>
+  var I18N = {
+    nav_showreel: { fr: "Showreel", en: "Showreel" },
+    nav_realisations: { fr: "Réalisations", en: "Work" },
+    nav_services: { fr: "Services", en: "Services" },
+    nav_marques: { fr: "Marques", en: "Clients" },
+    nav_apropos: { fr: "À propos", en: "About" },
+    nav_contact: { fr: "Contact", en: "Contact" },
+
+    hero_tagline: { fr: "Drone · FPV · Aerial Cinematography", en: "Drone · FPV · Aerial Cinematography" },
+    hero_scroll: { fr: "Scroll", en: "Scroll" },
+
+    section_showreel_title: { fr: "Showreel", en: "Showreel" },
+    section_realisations_title: { fr: "Réalisations", en: "Work" },
+    section_services_title: { fr: "Services", en: "Services" },
+    section_marques_title: { fr: "Ils nous font confiance", en: "Trusted By" },
+    section_apropos_title: { fr: "À propos", en: "About" },
+    section_contact_title: { fr: "Contact", en: "Contact" },
+
+    sr1: { fr: "<strong>Showreel FPV</strong>FPV · Cinématique", en: "<strong>FPV Showreel</strong>FPV · Cinematic" },
+    sr2: { fr: "<strong>Showreel Drone</strong>Drone · Aérien", en: "<strong>Drone Showreel</strong>Drone · Aerial" },
+    sr3: { fr: "<strong>Sport & Action</strong>FPV · Tracking", en: "<strong>Sport & Action</strong>FPV · Tracking" },
+    sr4: { fr: "<strong>Cinématique</strong>Drone · 4K", en: "<strong>Cinematic</strong>Drone · 4K" },
+
+    filter_tous: { fr: "Tous", en: "All" },
+    filter_autres: { fr: "Autres", en: "Other" },
+    realisations_empty: { fr: "Vidéos à venir pour ce client — dis-moi lesquelles associer.", en: "Videos coming soon for this client — let me know which ones to link here." },
+
+    re1: { fr: "<strong>Production</strong>FPV · Drone", en: "<strong>Production</strong>FPV · Drone" },
+    re2: { fr: "<strong>Production</strong>FPV · Tracking", en: "<strong>Production</strong>FPV · Tracking" },
+    re3: { fr: "<strong>Production</strong>Drone · Cinéma", en: "<strong>Production</strong>Drone · Cinema" },
+    re4: { fr: "<strong>Production</strong>FPV · Action", en: "<strong>Production</strong>FPV · Action" },
+    re5: { fr: "<strong>Production</strong>Drone · 4K", en: "<strong>Production</strong>Drone · 4K" },
+    re6: { fr: "<strong>Production</strong>Drone · Aérien", en: "<strong>Production</strong>Drone · Aerial" },
+    re7: { fr: "<strong>Production</strong>FPV · Sport", en: "<strong>Production</strong>FPV · Sport" },
+    re8: { fr: "<strong>Production</strong>Drone · Live", en: "<strong>Production</strong>Drone · Live" },
+    re9: { fr: "<strong>Production</strong>FPV · Cinématique", en: "<strong>Production</strong>FPV · Cinematic" },
+
+    svc1_name: { fr: "Production Réalisation : Publicité, Film", en: "Production: Advertising & Film" },
+    svc1_desc: { fr: "Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.", en: "Full production for TV spots, web content, and music videos. Creative direction, filming, and post-production." },
+    svc2_name: { fr: "Drone FPV", en: "FPV Drone" },
+    svc2_desc: { fr: "Vols immersifs à grande vitesse, passages en FPV cinématiques. Des plans impossibles à obtenir autrement — intérieurs, extérieurs, tracking dynamique.", en: "High-speed immersive flights, cinematic FPV passes. Shots impossible to get any other way — indoors, outdoors, dynamic tracking." },
+    svc3_name: { fr: "Drone", en: "Drone" },
+    svc3_desc: { fr: "Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.", en: "High-quality aerial footage for films, ads, events, and documentaries. Up to 6K resolution, gyroscopic stabilization." },
+    svc4_name: { fr: "Sport & Événement", en: "Sport & Events" },
+    svc4_desc: { fr: "Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.", en: "Live and filmed coverage of sporting events, festivals, and concerts. Responsiveness and discretion guaranteed." },
+    svc5_name: { fr: "BTP & Industrie", en: "Construction & Industry" },
+    svc5_desc: { fr: "Inspection de chantiers, relevés topographiques, suivi de projets. Rapports visuels professionnels.", en: "Site inspections, topographic surveys, project monitoring. Professional visual reports." },
+    svc6_name: { fr: "Immobilier", en: "Real Estate" },
+    svc6_desc: { fr: "Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.", en: "Showcasing prestige properties. Aerial photos and videos for agencies and developers." },
+
+    brands_intro: { fr: "Marques & partenaires", en: "Brands & Partners" },
+
+    about_p1: { fr: "<strong>Why Film</strong>, c'est une vision singulière du mouvement. Né d'une passion pour les images qui dépassent les limites du regard humain, notre travail explore l'espace entre le sol et le ciel — là où la caméra devient oiseau, bolide, ou ombre rasante.", en: "<strong>Why Film</strong> is a singular vision of movement. Born from a passion for images that push past the limits of human sight, our work explores the space between ground and sky — where the camera becomes bird, machine, or a shadow skimming the earth." },
+    about_p2: { fr: "Opérateur drone certifié et pilote FPV, j'interviens sur des productions exigeantes : <strong>publicités, clips musicaux, événements sportifs</strong>, longs-métrages et documentaires. Chaque vol est une chorégraphie millimétrée au service de l'émotion.", en: "Certified drone operator and FPV pilot, I work on demanding productions: <strong>advertising, music videos, sporting events</strong>, feature films and documentaries. Every flight is a precision-choreographed pursuit of emotion." },
+    about_p3: { fr: "Basé dans les <strong>Alpes</strong>, je rayonne sur toute la France et à l'international. Mon terrain de jeu ? Les paysages de montagne, les zones urbaines complexes, les environnements où d'autres n'osent pas voler.", en: "Based in the <strong>French Alps</strong>, I work across France and internationally. My playground? Mountain landscapes, complex urban areas, environments where others don't dare fly." },
+
+    stat_years: { fr: "Années d'expérience", en: "Years of experience" },
+    stat_productions: { fr: "Productions", en: "Productions" },
+    stat_brands: { fr: "Marques", en: "Brands" },
+    stat_hours: { fr: "Heures de vol", en: "Flight hours" },
+
+    contact_intro: { fr: "Un projet en tête ? Une production à venir ?<br>Parlons-en.", en: "Got a project in mind? A production coming up?<br>Let's talk." },
+    contact_location: { fr: "📍 Rhône-Alpes, France<br><span style=\"color:#aaa; text-shadow:0 1px 4px rgba(0,0,0,0.7)\">Déplacements France & International</span>", en: "📍 Rhône-Alpes, France<br><span style=\"color:#aaa; text-shadow:0 1px 4px rgba(0,0,0,0.7)\">Available France & Worldwide</span>" },
+
+    form_name_ph: { fr: "Nom", en: "Name" },
+    form_email_ph: { fr: "Email", en: "Email" },
+    form_subject_ph: { fr: "Sujet / Type de projet", en: "Subject / Project type" },
+    form_message_ph: { fr: "Décrivez votre projet...", en: "Describe your project..." },
+    form_btn: { fr: "Envoyer le message", en: "Send message" },
+    form_note: { fr: "Premier envoi : un email de confirmation FormSubmit sera reçu, il faut cliquer une fois pour activer la réception des messages.", en: "First submission: a FormSubmit confirmation email will be sent — click it once to activate message delivery." },
+
+    footer_copy: { fr: "© 2026 Why Film — Tous droits réservés", en: "© 2026 Why Film — All rights reserved" }
+  };
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (I18N[k]) el.textContent = I18N[k][lang];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-html');
+      if (I18N[k]) el.innerHTML = I18N[k][lang];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-placeholder');
+      if (I18N[k]) el.placeholder = I18N[k][lang];
+    });
+    document.querySelectorAll('.lang-switch button').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    try { localStorage.setItem('whyfilms_lang', lang); } catch (e) {}
+  }
+
   function showSection(id) {
     document.querySelectorAll('section').forEach(function (s) { s.classList.remove('active'); });
     document.querySelectorAll('.nav-links a').forEach(function (a) { a.classList.remove('active'); });
@@ -794,6 +997,26 @@
 
     window.scrollTo({ top: document.querySelector('nav').offsetTop, behavior: 'smooth' });
   }
+
+  function filterRealisations(client) {
+    var cards = document.querySelectorAll('#realisations .video-card');
+    var visibleCount = 0;
+    cards.forEach(function (card) {
+      var show = (client === 'tous') || (card.getAttribute('data-client') === client);
+      card.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    document.querySelectorAll('#realisations .filter-chip').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-filter') === client);
+    });
+    document.getElementById('realisations-empty').style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  (function initLang() {
+    var saved = 'fr';
+    try { saved = localStorage.getItem('whyfilms_lang') || 'fr'; } catch (e) {}
+    applyLang(saved);
+  })();
 </script>
 </body>
 </html>
