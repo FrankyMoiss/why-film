@@ -470,35 +470,36 @@
 
   .brands-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 0.9rem;
   }
 
   .brand-card {
-    background: var(--dark3);
-    border: 1px solid rgba(255,255,255,0.07);
-    height: 100px;
+    background: rgba(26,26,26,0.72);
+    border: 1px solid rgba(255,255,255,0.08);
+    min-height: 66px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    filter: grayscale(1) brightness(0.7);
-    transition: filter 0.3s, border-color 0.3s;
+    text-align: center;
+    padding: 0.9rem 0.8rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c9c2b4;
+    transition: color 0.25s, border-color 0.25s, background 0.25s;
   }
 
   .brand-card:hover {
-    filter: grayscale(0) brightness(1);
-    border-color: rgba(212,160,23,0.3);
+    color: var(--gold-light);
+    border-color: rgba(212,160,23,0.45);
+    background: rgba(26,26,26,0.92);
   }
 
-  .brand-card img { max-width: 100%; max-height: 60px; object-fit: contain; }
-
-  .brand-fallback {
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 0.1em;
-    color: #aaa;
-    font-size: 0.85rem;
-    text-transform: uppercase;
+  @media (max-width: 600px) {
+    .brands-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.7rem; }
+    .brand-card { min-height: 58px; font-size: 0.74rem; letter-spacing: 0.1em; }
   }
 
   /* ─── CONTACT ─── */
@@ -936,30 +937,66 @@
   <div class="section-line"></div>
   <p class="brands-intro" data-i18n="brands_intro">Marques & partenaires</p>
   <div class="brands-grid">
-    <div class="brand-card" title="Nike">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo_NIKE.svg?width=200" alt="Nike" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>NIKE</span>'">
-    </div>
-    <div class="brand-card" title="BlackRock">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/BlackRock_wordmark.svg?width=200" alt="BlackRock" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>BLACKROCK</span>'">
-    </div>
-    <div class="brand-card" title="Burton Snowboards">
-      <span class="brand-fallback">BURTON</span>
-    </div>
-    <div class="brand-card" title="Caterpillar">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Caterpillar_logo.svg?width=200" alt="Caterpillar" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>CATERPILLAR</span>'">
-    </div>
-    <div class="brand-card" title="Porsche">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_Logo_2024.png?width=200" alt="Porsche" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>PORSCHE</span>'">
-    </div>
-    <div class="brand-card" title="TAG Heuer">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/TAG_Heuer_Logo.svg?width=200" alt="TAG Heuer" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>TAG HEUER</span>'">
-    </div>
-    <div class="brand-card" title="Decathlon">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Decathlon_-_logo_%28France%2C_2024%29.svg?width=200" alt="Decathlon" onerror="this.parentNode.innerHTML='<span class=\'brand-fallback\'>DECATHLON</span>'">
-    </div>
-    <div class="brand-card" title="Lapland Ice Driving">
-      <span class="brand-fallback">LAPLAND ICE DRIVING</span>
-    </div>
+    <div class="brand-card">Nike</div>
+    <div class="brand-card">Black Rock</div>
+    <div class="brand-card">Lapland Ice Driving</div>
+    <div class="brand-card">Decathlon</div>
+    <div class="brand-card">Commencal</div>
+    <div class="brand-card">Candide</div>
+    <div class="brand-card">Gomera Production</div>
+    <div class="brand-card">Vans</div>
+    <div class="brand-card">Caterpillar</div>
+    <div class="brand-card">Almo Film</div>
+    <div class="brand-card">Porsche</div>
+    <div class="brand-card">Tag Heuer</div>
+    <div class="brand-card">DJI</div>
+    <div class="brand-card">Studio Sport</div>
+    <div class="brand-card">GoPro</div>
+    <div class="brand-card">IQOS</div>
+    <div class="brand-card">XD Motion</div>
+    <div class="brand-card">OBC</div>
+    <div class="brand-card">Olympics</div>
+    <div class="brand-card">In&amp;Motion</div>
+    <div class="brand-card">Alban Nieroz Studio</div>
+    <div class="brand-card">Dreamscape</div>
+    <div class="brand-card">Rockrider</div>
+    <div class="brand-card">Inovik by Decathlon</div>
+    <div class="brand-card">Wedze</div>
+    <div class="brand-card">Aigle</div>
+    <div class="brand-card">Chez Gust</div>
+    <div class="brand-card">ABM</div>
+    <div class="brand-card">Imagina Studio</div>
+    <div class="brand-card">Tudor</div>
+    <div class="brand-card">Vaudoise Arena</div>
+    <div class="brand-card">Ride&amp;Drive Communication &amp; Events</div>
+    <div class="brand-card">Honda</div>
+    <div class="brand-card">Kymco</div>
+    <div class="brand-card">Nidecker Group</div>
+    <div class="brand-card">Burt Prod</div>
+    <div class="brand-card">Veolia</div>
+    <div class="brand-card">Descremps BTP</div>
+    <div class="brand-card">Mines</div>
+    <div class="brand-card">Perrotton</div>
+    <div class="brand-card">RTE</div>
+    <div class="brand-card">ASO</div>
+    <div class="brand-card">IronMan</div>
+    <div class="brand-card">L&#x27;Etape du Tour</div>
+    <div class="brand-card">Dakar Series</div>
+    <div class="brand-card">Rossignol</div>
+    <div class="brand-card">Burton Snowboard</div>
+    <div class="brand-card">Dakine</div>
+    <div class="brand-card">DC Shoes USA</div>
+    <div class="brand-card">Volcom</div>
+    <div class="brand-card">Electric</div>
+    <div class="brand-card">Xsories</div>
+    <div class="brand-card">Quicksilver</div>
+    <div class="brand-card">Method Boat</div>
+    <div class="brand-card">La Clusaz</div>
+    <div class="brand-card">Glacier 300</div>
+    <div class="brand-card">Valmorel</div>
+    <div class="brand-card">Dynamic Environement</div>
+    <div class="brand-card">Adamia Group</div>
+    <div class="brand-card">France TV</div>
   </div>
 </section>
 
