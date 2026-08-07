@@ -477,29 +477,46 @@
   .brand-card {
     background: rgba(26,26,26,0.72);
     border: 1px solid rgba(255,255,255,0.08);
-    min-height: 66px;
+    min-height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0.9rem 0.8rem;
+    padding: 1rem;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .brand-card:hover {
+    border-color: rgba(212,160,23,0.45);
+    background: rgba(26,26,26,0.92);
+  }
+
+  .brand-card img {
+    max-width: 100%;
+    max-height: 46px;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0) invert(1) opacity(0.72);
+    transition: filter 0.25s;
+  }
+
+  .brand-card:hover img { filter: grayscale(0) brightness(1) invert(0) opacity(1); }
+
+  .brand-card--text {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #c9c2b4;
     transition: color 0.25s, border-color 0.25s, background 0.25s;
   }
 
-  .brand-card:hover {
-    color: var(--gold-light);
-    border-color: rgba(212,160,23,0.45);
-    background: rgba(26,26,26,0.92);
-  }
+  .brand-card--text:hover { color: var(--gold-light); }
 
   @media (max-width: 600px) {
     .brands-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.7rem; }
-    .brand-card { min-height: 58px; font-size: 0.74rem; letter-spacing: 0.1em; }
+    .brand-card { min-height: 80px; padding: 0.7rem; }
+    .brand-card img { max-height: 36px; }
+    .brand-card--text { font-size: 0.74rem; letter-spacing: 0.1em; }
   }
 
   /* ─── CONTACT ─── */
@@ -937,66 +954,112 @@
   <div class="section-line"></div>
   <p class="brands-intro" data-i18n="brands_intro">Marques & partenaires</p>
   <div class="brands-grid">
-    <div class="brand-card">Nike</div>
-    <div class="brand-card">Black Rock</div>
-    <div class="brand-card">Lapland Ice Driving</div>
-    <div class="brand-card">Decathlon</div>
-    <div class="brand-card">Commencal</div>
-    <div class="brand-card">Candide</div>
-    <div class="brand-card">Gomera Production</div>
-    <div class="brand-card">Vans</div>
-    <div class="brand-card">Caterpillar</div>
-    <div class="brand-card">Almo Film</div>
-    <div class="brand-card">Porsche</div>
-    <div class="brand-card">Tag Heuer</div>
-    <div class="brand-card">DJI</div>
-    <div class="brand-card">Studio Sport</div>
-    <div class="brand-card">GoPro</div>
-    <div class="brand-card">IQOS</div>
-    <div class="brand-card">XD Motion</div>
-    <div class="brand-card">OBC</div>
-    <div class="brand-card">Olympics</div>
-    <div class="brand-card">In&amp;Motion</div>
-    <div class="brand-card">Alban Nieroz Studio</div>
-    <div class="brand-card">Dreamscape</div>
-    <div class="brand-card">Rockrider</div>
-    <div class="brand-card">Inovik by Decathlon</div>
-    <div class="brand-card">Wedze</div>
-    <div class="brand-card">Aigle</div>
-    <div class="brand-card">Chez Gust</div>
-    <div class="brand-card">ABM</div>
-    <div class="brand-card">Imagina Studio</div>
-    <div class="brand-card">Tudor</div>
-    <div class="brand-card">Vaudoise Arena</div>
-    <div class="brand-card">Ride&amp;Drive Communication &amp; Events</div>
-    <div class="brand-card">Honda</div>
-    <div class="brand-card">Kymco</div>
-    <div class="brand-card">Nidecker Group</div>
-    <div class="brand-card">Burt Prod</div>
-    <div class="brand-card">Veolia</div>
-    <div class="brand-card">Descremps BTP</div>
-    <div class="brand-card">Mines</div>
-    <div class="brand-card">Perrotton</div>
-    <div class="brand-card">RTE</div>
-    <div class="brand-card">ASO</div>
-    <div class="brand-card">IronMan</div>
-    <div class="brand-card">L&#x27;Etape du Tour</div>
-    <div class="brand-card">Dakar Series</div>
-    <div class="brand-card">Rossignol</div>
-    <div class="brand-card">Burton Snowboard</div>
-    <div class="brand-card">Dakine</div>
-    <div class="brand-card">DC Shoes USA</div>
-    <div class="brand-card">Volcom</div>
-    <div class="brand-card">Electric</div>
-    <div class="brand-card">Xsories</div>
-    <div class="brand-card">Quicksilver</div>
-    <div class="brand-card">Method Boat</div>
-    <div class="brand-card">La Clusaz</div>
-    <div class="brand-card">Glacier 300</div>
-    <div class="brand-card">Valmorel</div>
-    <div class="brand-card">Dynamic Environement</div>
-    <div class="brand-card">Adamia Group</div>
-    <div class="brand-card">France TV</div>
+    <div class="brand-card" title="Nike">
+      <img src="assets/logos/nike.png" alt="Nike" loading="lazy">
+    </div>
+    <div class="brand-card" title="Black Rock">
+      <img src="assets/logos/black-rock.png" alt="Black Rock" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Lapland Ice Driving">Lapland Ice Driving</div>
+    <div class="brand-card" title="Decathlon">
+      <img src="assets/logos/decathlon.png" alt="Decathlon" loading="lazy">
+    </div>
+    <div class="brand-card" title="Commencal">
+      <img src="assets/logos/commencal.png" alt="Commencal" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Candide">Candide</div>
+    <div class="brand-card brand-card--text" title="Gomera Production">Gomera Production</div>
+    <div class="brand-card" title="Vans">
+      <img src="assets/logos/vans.png" alt="Vans" loading="lazy">
+    </div>
+    <div class="brand-card" title="Caterpillar">
+      <img src="assets/logos/caterpillar.png" alt="Caterpillar" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Almo Film">Almo Film</div>
+    <div class="brand-card" title="Porsche">
+      <img src="assets/logos/porsche.png" alt="Porsche" loading="lazy">
+    </div>
+    <div class="brand-card" title="Tag Heuer">
+      <img src="assets/logos/tag-heuer.png" alt="Tag Heuer" loading="lazy">
+    </div>
+    <div class="brand-card" title="DJI">
+      <img src="assets/logos/dji.png" alt="DJI" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Studio Sport">Studio Sport</div>
+    <div class="brand-card" title="GoPro">
+      <img src="assets/logos/gopro.png" alt="GoPro" loading="lazy">
+    </div>
+    <div class="brand-card" title="IQOS">
+      <img src="assets/logos/iqos.png" alt="IQOS" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="XD Motion">XD Motion</div>
+    <div class="brand-card brand-card--text" title="OBC">OBC</div>
+    <div class="brand-card" title="Olympics">
+      <img src="assets/logos/olympics.png" alt="Olympics" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="In&amp;Motion">In&amp;Motion</div>
+    <div class="brand-card brand-card--text" title="Alban Nieroz Studio">Alban Nieroz Studio</div>
+    <div class="brand-card brand-card--text" title="Dreamscape">Dreamscape</div>
+    <div class="brand-card brand-card--text" title="Rockrider">Rockrider</div>
+    <div class="brand-card brand-card--text" title="Inovik by Decathlon">Inovik by Decathlon</div>
+    <div class="brand-card brand-card--text" title="Wedze">Wedze</div>
+    <div class="brand-card brand-card--text" title="Aigle">Aigle</div>
+    <div class="brand-card brand-card--text" title="Chez Gust">Chez Gust</div>
+    <div class="brand-card brand-card--text" title="ABM">ABM</div>
+    <div class="brand-card brand-card--text" title="Imagina Studio">Imagina Studio</div>
+    <div class="brand-card" title="Tudor">
+      <img src="assets/logos/tudor.png" alt="Tudor" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Vaudoise Arena">Vaudoise Arena</div>
+    <div class="brand-card brand-card--text" title="Ride&amp;Drive Communication &amp; Events">Ride&amp;Drive Communication &amp; Events</div>
+    <div class="brand-card" title="Honda">
+      <img src="assets/logos/honda.png" alt="Honda" loading="lazy">
+    </div>
+    <div class="brand-card" title="Kymco">
+      <img src="assets/logos/kymco.png" alt="Kymco" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Nidecker Group">Nidecker Group</div>
+    <div class="brand-card brand-card--text" title="Burt Prod">Burt Prod</div>
+    <div class="brand-card" title="Veolia">
+      <img src="assets/logos/veolia.png" alt="Veolia" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Descremps BTP">Descremps BTP</div>
+    <div class="brand-card brand-card--text" title="Mines">Mines</div>
+    <div class="brand-card brand-card--text" title="Perrotton">Perrotton</div>
+    <div class="brand-card brand-card--text" title="RTE">RTE</div>
+    <div class="brand-card" title="ASO">
+      <img src="assets/logos/aso.png" alt="ASO" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="IronMan">IronMan</div>
+    <div class="brand-card brand-card--text" title="L&#x27;Etape du Tour">L&#x27;Etape du Tour</div>
+    <div class="brand-card brand-card--text" title="Dakar Series">Dakar Series</div>
+    <div class="brand-card" title="Rossignol">
+      <img src="assets/logos/rossignol.png" alt="Rossignol" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Burton Snowboard">Burton Snowboard</div>
+    <div class="brand-card" title="Dakine">
+      <img src="assets/logos/dakine.png" alt="Dakine" loading="lazy">
+    </div>
+    <div class="brand-card" title="DC Shoes USA">
+      <img src="assets/logos/dc-shoes-usa.png" alt="DC Shoes USA" loading="lazy">
+    </div>
+    <div class="brand-card" title="Volcom">
+      <img src="assets/logos/volcom.png" alt="Volcom" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Electric">Electric</div>
+    <div class="brand-card brand-card--text" title="Xsories">Xsories</div>
+    <div class="brand-card" title="Quicksilver">
+      <img src="assets/logos/quicksilver.png" alt="Quicksilver" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--text" title="Method Boat">Method Boat</div>
+    <div class="brand-card brand-card--text" title="La Clusaz">La Clusaz</div>
+    <div class="brand-card brand-card--text" title="Glacier 300">Glacier 300</div>
+    <div class="brand-card brand-card--text" title="Valmorel">Valmorel</div>
+    <div class="brand-card brand-card--text" title="Dynamic Environement">Dynamic Environement</div>
+    <div class="brand-card brand-card--text" title="Adamia Group">Adamia Group</div>
+    <div class="brand-card" title="France TV">
+      <img src="assets/logos/france-tv.png" alt="France TV" loading="lazy">
+    </div>
   </div>
 </section>
 
