@@ -382,6 +382,19 @@
     gap: 1.5rem;
   }
 
+  /* 5 blocs : 3 en haut, 2 en bas elargis, pour une grille toujours pleine */
+  @media (min-width: 820px) {
+    .services-grid { grid-template-columns: repeat(6, 1fr); }
+    .services-grid .service-card { grid-column: span 2; }
+    .services-grid .service-card:nth-last-child(-n+2) { grid-column: span 3; }
+  }
+
+  /* tablette : 2 colonnes, le dernier bloc prend toute la largeur */
+  @media (min-width: 560px) and (max-width: 819px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid .service-card:last-child { grid-column: span 2; }
+  }
+
   .service-card {
     border: 1px solid rgba(255,255,255,0.07);
     padding: 2rem;
@@ -908,11 +921,6 @@
       <div class="service-name" data-i18n="svc4_name">Sport & Événement</div>
       <p class="service-desc" data-i18n="svc4_desc">Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.</p>
     </div>
-    <div class="service-card">
-      <div class="service-icon">🏗</div>
-      <div class="service-name" data-i18n="svc5_name">BTP & Industrie</div>
-      <p class="service-desc" data-i18n="svc5_desc">Inspection de chantiers, relevés topographiques, suivi de projets. Rapports visuels professionnels.</p>
-    </div>
     <div class="service-card is-link" onclick="goRealisations('immobilier')">
       <div class="service-icon">🏠</div>
       <div class="service-name" data-i18n="svc6_name">Immobilier</div>
@@ -1071,8 +1079,6 @@
     svc3_desc: { fr: "Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.", en: "High-quality aerial footage for films, ads, events, and documentaries. Up to 6K resolution, gyroscopic stabilization." },
     svc4_name: { fr: "Sport & Événement", en: "Sport & Events" },
     svc4_desc: { fr: "Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.", en: "Live and filmed coverage of sporting events, festivals, and concerts. Responsiveness and discretion guaranteed." },
-    svc5_name: { fr: "BTP & Industrie", en: "Construction & Industry" },
-    svc5_desc: { fr: "Inspection de chantiers, relevés topographiques, suivi de projets. Rapports visuels professionnels.", en: "Site inspections, topographic surveys, project monitoring. Professional visual reports." },
     svc6_name: { fr: "Immobilier", en: "Real Estate" },
     svc6_desc: { fr: "Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.", en: "Showcasing prestige properties. Aerial photos and videos for agencies and developers." },
 
