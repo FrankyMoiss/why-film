@@ -495,7 +495,7 @@
     max-width: 100%;
     max-height: 46px;
     object-fit: contain;
-    filter: grayscale(1) brightness(0) invert(1) opacity(0.72);
+    filter: grayscale(1) brightness(0) invert(1) opacity(0.85);
     transition: filter 0.25s;
   }
 
@@ -506,6 +506,10 @@
   .brand-card--ondark:hover img { filter: grayscale(0) brightness(1) opacity(1); }
 
   .brand-card--sm img { max-height: 30px; }
+  .brand-card--lg img { max-height: 72px; }
+  .brand-card--xl img { max-height: 88px; }
+  .brand-card--wide { padding: 0.5rem 0.4rem; }
+  .brand-card--wide img { max-height: 40px; }
 
   .brand-card--text {
     font-family: 'Barlow Condensed', sans-serif;
@@ -966,10 +970,10 @@
     <div class="brand-card" title="Black Rock">
       <img src="assets/logos/black-rock.png" alt="Black Rock" loading="lazy">
     </div>
-    <div class="brand-card" title="Lapland Ice Driving">
+    <div class="brand-card brand-card--xl" title="Lapland Ice Driving">
       <img src="assets/logos/lapland-ice-driving.png" alt="Lapland Ice Driving" loading="lazy">
     </div>
-    <div class="brand-card brand-card--ondark" title="Decathlon">
+    <div class="brand-card" title="Decathlon">
       <img src="assets/logos/decathlon.png" alt="Decathlon" loading="lazy">
     </div>
     <div class="brand-card" title="Commencal">
@@ -990,7 +994,7 @@
     <div class="brand-card" title="Almo Film">
       <img src="assets/logos/almo-film.png" alt="Almo Film" loading="lazy">
     </div>
-    <div class="brand-card" title="Porsche">
+    <div class="brand-card brand-card--wide" title="Porsche">
       <img src="assets/logos/porsche.png" alt="Porsche" loading="lazy">
     </div>
     <div class="brand-card brand-card--ondark" title="Tag Heuer">
@@ -1045,7 +1049,7 @@
     <div class="brand-card" title="Imagina Studio">
       <img src="assets/logos/imagina-studio.png" alt="Imagina Studio" loading="lazy">
     </div>
-    <div class="brand-card" title="Tudor">
+    <div class="brand-card brand-card--lg" title="Tudor">
       <img src="assets/logos/tudor.png" alt="Tudor" loading="lazy">
     </div>
     <div class="brand-card" title="Vaudoise Arena">
@@ -1054,13 +1058,13 @@
     <div class="brand-card" title="Ride&amp;Drive Communication &amp; Events">
       <img src="assets/logos/ride-drive-communication-events.png" alt="Ride&amp;Drive Communication &amp; Events" loading="lazy">
     </div>
-    <div class="brand-card" title="Honda">
+    <div class="brand-card brand-card--lg" title="Honda">
       <img src="assets/logos/honda.png" alt="Honda" loading="lazy">
     </div>
     <div class="brand-card" title="Kymco">
       <img src="assets/logos/kymco.png" alt="Kymco" loading="lazy">
     </div>
-    <div class="brand-card" title="Nidecker Group">
+    <div class="brand-card brand-card--lg" title="Nidecker Group">
       <img src="assets/logos/nidecker-group.png" alt="Nidecker Group" loading="lazy">
     </div>
     <div class="brand-card" title="Burt Prod">
@@ -1093,7 +1097,7 @@
     <div class="brand-card brand-card--ondark" title="Dakar Series">
       <img src="assets/logos/dakar-series.png" alt="Dakar Series" loading="lazy">
     </div>
-    <div class="brand-card brand-card--ondark" title="Rossignol">
+    <div class="brand-card brand-card--ondark brand-card--lg" title="Rossignol">
       <img src="assets/logos/rossignol.png" alt="Rossignol" loading="lazy">
     </div>
     <div class="brand-card brand-card--ondark" title="Burton Snowboard">
@@ -1123,7 +1127,7 @@
     <div class="brand-card brand-card--ondark" title="La Clusaz">
       <img src="assets/logos/la-clusaz.png" alt="La Clusaz" loading="lazy">
     </div>
-    <div class="brand-card" title="Glacier 300">
+    <div class="brand-card brand-card--lg" title="Glacier 300">
       <img src="assets/logos/glacier-300.png" alt="Glacier 300" loading="lazy">
     </div>
     <div class="brand-card" title="Valmorel">
