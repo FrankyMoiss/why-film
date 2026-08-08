@@ -501,6 +501,12 @@
 
   .brand-card:hover img { filter: grayscale(0) brightness(1) invert(0) opacity(1); }
 
+  /* logos deja clairs sur fond sombre : pas d'inversion, sinon ils deviennent un bloc blanc */
+  .brand-card--ondark img { filter: grayscale(1) brightness(1.35) opacity(0.85); }
+  .brand-card--ondark:hover img { filter: grayscale(0) brightness(1) opacity(1); }
+
+  .brand-card--sm img { max-height: 30px; }
+
   .brand-card--text {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.84rem;
@@ -954,109 +960,181 @@
   <div class="section-line"></div>
   <p class="brands-intro" data-i18n="brands_intro">Marques & partenaires</p>
   <div class="brands-grid">
-    <div class="brand-card" title="Nike">
+    <div class="brand-card brand-card--sm" title="Nike">
       <img src="assets/logos/nike.png" alt="Nike" loading="lazy">
     </div>
     <div class="brand-card" title="Black Rock">
       <img src="assets/logos/black-rock.png" alt="Black Rock" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Lapland Ice Driving">Lapland Ice Driving</div>
-    <div class="brand-card" title="Decathlon">
+    <div class="brand-card" title="Lapland Ice Driving">
+      <img src="assets/logos/lapland-ice-driving.png" alt="Lapland Ice Driving" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="Decathlon">
       <img src="assets/logos/decathlon.png" alt="Decathlon" loading="lazy">
     </div>
     <div class="brand-card" title="Commencal">
       <img src="assets/logos/commencal.png" alt="Commencal" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Candide">Candide</div>
-    <div class="brand-card brand-card--text" title="Gomera Production">Gomera Production</div>
+    <div class="brand-card" title="Candide">
+      <img src="assets/logos/candide.png" alt="Candide" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="Gomera Production">
+      <img src="assets/logos/gomera-production.png" alt="Gomera Production" loading="lazy">
+    </div>
     <div class="brand-card" title="Vans">
       <img src="assets/logos/vans.png" alt="Vans" loading="lazy">
     </div>
     <div class="brand-card" title="Caterpillar">
       <img src="assets/logos/caterpillar.png" alt="Caterpillar" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Almo Film">Almo Film</div>
+    <div class="brand-card" title="Almo Film">
+      <img src="assets/logos/almo-film.png" alt="Almo Film" loading="lazy">
+    </div>
     <div class="brand-card" title="Porsche">
       <img src="assets/logos/porsche.png" alt="Porsche" loading="lazy">
     </div>
-    <div class="brand-card" title="Tag Heuer">
+    <div class="brand-card brand-card--ondark" title="Tag Heuer">
       <img src="assets/logos/tag-heuer.png" alt="Tag Heuer" loading="lazy">
     </div>
     <div class="brand-card" title="DJI">
       <img src="assets/logos/dji.png" alt="DJI" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Studio Sport">Studio Sport</div>
+    <div class="brand-card" title="Studio Sport">
+      <img src="assets/logos/studio-sport.png" alt="Studio Sport" loading="lazy">
+    </div>
     <div class="brand-card" title="GoPro">
       <img src="assets/logos/gopro.png" alt="GoPro" loading="lazy">
     </div>
     <div class="brand-card" title="IQOS">
       <img src="assets/logos/iqos.png" alt="IQOS" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="XD Motion">XD Motion</div>
+    <div class="brand-card" title="XD Motion">
+      <img src="assets/logos/xd-motion.png" alt="XD Motion" loading="lazy">
+    </div>
     <div class="brand-card brand-card--text" title="OBC">OBC</div>
     <div class="brand-card" title="Olympics">
       <img src="assets/logos/olympics.png" alt="Olympics" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="In&amp;Motion">In&amp;Motion</div>
-    <div class="brand-card brand-card--text" title="Alban Nieroz Studio">Alban Nieroz Studio</div>
-    <div class="brand-card brand-card--text" title="Dreamscape">Dreamscape</div>
-    <div class="brand-card brand-card--text" title="Rockrider">Rockrider</div>
-    <div class="brand-card brand-card--text" title="Inovik by Decathlon">Inovik by Decathlon</div>
-    <div class="brand-card brand-card--text" title="Wedze">Wedze</div>
-    <div class="brand-card brand-card--text" title="Aigle">Aigle</div>
-    <div class="brand-card brand-card--text" title="Chez Gust">Chez Gust</div>
-    <div class="brand-card brand-card--text" title="ABM">ABM</div>
-    <div class="brand-card brand-card--text" title="Imagina Studio">Imagina Studio</div>
+    <div class="brand-card" title="In&amp;Motion">
+      <img src="assets/logos/in-motion.png" alt="In&amp;Motion" loading="lazy">
+    </div>
+    <div class="brand-card" title="Alban Nieroz Studio">
+      <img src="assets/logos/alban-nieroz-studio.png" alt="Alban Nieroz Studio" loading="lazy">
+    </div>
+    <div class="brand-card" title="Dreamscape">
+      <img src="assets/logos/dreamscape.png" alt="Dreamscape" loading="lazy">
+    </div>
+    <div class="brand-card" title="Rockrider">
+      <img src="assets/logos/rockrider.png" alt="Rockrider" loading="lazy">
+    </div>
+    <div class="brand-card" title="Inovik by Decathlon">
+      <img src="assets/logos/inovik-by-decathlon.png" alt="Inovik by Decathlon" loading="lazy">
+    </div>
+    <div class="brand-card" title="Wedze">
+      <img src="assets/logos/wedze.png" alt="Wedze" loading="lazy">
+    </div>
+    <div class="brand-card" title="Aigle">
+      <img src="assets/logos/aigle.png" alt="Aigle" loading="lazy">
+    </div>
+    <div class="brand-card" title="Chez Gust">
+      <img src="assets/logos/chez-gust.png" alt="Chez Gust" loading="lazy">
+    </div>
+    <div class="brand-card" title="ABM">
+      <img src="assets/logos/abm.png" alt="ABM" loading="lazy">
+    </div>
+    <div class="brand-card" title="Imagina Studio">
+      <img src="assets/logos/imagina-studio.png" alt="Imagina Studio" loading="lazy">
+    </div>
     <div class="brand-card" title="Tudor">
       <img src="assets/logos/tudor.png" alt="Tudor" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Vaudoise Arena">Vaudoise Arena</div>
-    <div class="brand-card brand-card--text" title="Ride&amp;Drive Communication &amp; Events">Ride&amp;Drive Communication &amp; Events</div>
+    <div class="brand-card" title="Vaudoise Arena">
+      <img src="assets/logos/vaudoise-arena.png" alt="Vaudoise Arena" loading="lazy">
+    </div>
+    <div class="brand-card" title="Ride&amp;Drive Communication &amp; Events">
+      <img src="assets/logos/ride-drive-communication-events.png" alt="Ride&amp;Drive Communication &amp; Events" loading="lazy">
+    </div>
     <div class="brand-card" title="Honda">
       <img src="assets/logos/honda.png" alt="Honda" loading="lazy">
     </div>
     <div class="brand-card" title="Kymco">
       <img src="assets/logos/kymco.png" alt="Kymco" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Nidecker Group">Nidecker Group</div>
-    <div class="brand-card brand-card--text" title="Burt Prod">Burt Prod</div>
+    <div class="brand-card" title="Nidecker Group">
+      <img src="assets/logos/nidecker-group.png" alt="Nidecker Group" loading="lazy">
+    </div>
+    <div class="brand-card" title="Burt Prod">
+      <img src="assets/logos/burt-prod.png" alt="Burt Prod" loading="lazy">
+    </div>
     <div class="brand-card" title="Veolia">
       <img src="assets/logos/veolia.png" alt="Veolia" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Descremps BTP">Descremps BTP</div>
-    <div class="brand-card brand-card--text" title="Mines">Mines</div>
-    <div class="brand-card brand-card--text" title="Perrotton">Perrotton</div>
-    <div class="brand-card brand-card--text" title="RTE">RTE</div>
+    <div class="brand-card brand-card--ondark" title="Descremps BTP">
+      <img src="assets/logos/descremps-btp.png" alt="Descremps BTP" loading="lazy">
+    </div>
+    <div class="brand-card" title="Mines">
+      <img src="assets/logos/mines.png" alt="Mines" loading="lazy">
+    </div>
+    <div class="brand-card" title="Perrotton">
+      <img src="assets/logos/perrotton.png" alt="Perrotton" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="RTE">
+      <img src="assets/logos/rte.png" alt="RTE" loading="lazy">
+    </div>
     <div class="brand-card" title="ASO">
       <img src="assets/logos/aso.png" alt="ASO" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="IronMan">IronMan</div>
-    <div class="brand-card brand-card--text" title="L&#x27;Etape du Tour">L&#x27;Etape du Tour</div>
-    <div class="brand-card brand-card--text" title="Dakar Series">Dakar Series</div>
-    <div class="brand-card" title="Rossignol">
+    <div class="brand-card" title="IronMan">
+      <img src="assets/logos/ironman.png" alt="IronMan" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="L&#x27;Etape du Tour">
+      <img src="assets/logos/l-etape-du-tour.png" alt="L&#x27;Etape du Tour" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="Dakar Series">
+      <img src="assets/logos/dakar-series.png" alt="Dakar Series" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="Rossignol">
       <img src="assets/logos/rossignol.png" alt="Rossignol" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Burton Snowboard">Burton Snowboard</div>
+    <div class="brand-card brand-card--ondark" title="Burton Snowboard">
+      <img src="assets/logos/burton-snowboard.png" alt="Burton Snowboard" loading="lazy">
+    </div>
     <div class="brand-card" title="Dakine">
       <img src="assets/logos/dakine.png" alt="Dakine" loading="lazy">
     </div>
-    <div class="brand-card" title="DC Shoes USA">
+    <div class="brand-card brand-card--ondark" title="DC Shoes USA">
       <img src="assets/logos/dc-shoes-usa.png" alt="DC Shoes USA" loading="lazy">
     </div>
-    <div class="brand-card" title="Volcom">
+    <div class="brand-card brand-card--ondark" title="Volcom">
       <img src="assets/logos/volcom.png" alt="Volcom" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Electric">Electric</div>
-    <div class="brand-card brand-card--text" title="Xsories">Xsories</div>
+    <div class="brand-card" title="Electric">
+      <img src="assets/logos/electric.png" alt="Electric" loading="lazy">
+    </div>
+    <div class="brand-card" title="Xsories">
+      <img src="assets/logos/xsories.png" alt="Xsories" loading="lazy">
+    </div>
     <div class="brand-card" title="Quicksilver">
       <img src="assets/logos/quicksilver.png" alt="Quicksilver" loading="lazy">
     </div>
-    <div class="brand-card brand-card--text" title="Method Boat">Method Boat</div>
-    <div class="brand-card brand-card--text" title="La Clusaz">La Clusaz</div>
-    <div class="brand-card brand-card--text" title="Glacier 300">Glacier 300</div>
-    <div class="brand-card brand-card--text" title="Valmorel">Valmorel</div>
-    <div class="brand-card brand-card--text" title="Dynamic Environement">Dynamic Environement</div>
-    <div class="brand-card brand-card--text" title="Adamia Group">Adamia Group</div>
+    <div class="brand-card" title="Method Boat">
+      <img src="assets/logos/method-boat.png" alt="Method Boat" loading="lazy">
+    </div>
+    <div class="brand-card brand-card--ondark" title="La Clusaz">
+      <img src="assets/logos/la-clusaz.png" alt="La Clusaz" loading="lazy">
+    </div>
+    <div class="brand-card" title="Glacier 300">
+      <img src="assets/logos/glacier-300.png" alt="Glacier 300" loading="lazy">
+    </div>
+    <div class="brand-card" title="Valmorel">
+      <img src="assets/logos/valmorel.png" alt="Valmorel" loading="lazy">
+    </div>
+    <div class="brand-card" title="Dynamic Environement">
+      <img src="assets/logos/dynamic-environement.png" alt="Dynamic Environement" loading="lazy">
+    </div>
+    <div class="brand-card" title="Adamia Group">
+      <img src="assets/logos/adamia-group.png" alt="Adamia Group" loading="lazy">
+    </div>
     <div class="brand-card" title="France TV">
       <img src="assets/logos/france-tv.png" alt="France TV" loading="lazy">
     </div>
