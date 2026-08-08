@@ -477,12 +477,12 @@
   .brand-card {
     background: rgba(26,26,26,0.72);
     border: 1px solid rgba(255,255,255,0.08);
-    min-height: 96px;
+    min-height: 108px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 1rem;
+    padding: 0.85rem;
     transition: border-color 0.25s, background 0.25s;
   }
 
@@ -493,7 +493,7 @@
 
   .brand-card img {
     max-width: 100%;
-    max-height: 46px;
+    max-height: 50px;
     object-fit: contain;
     filter: grayscale(1) brightness(0) invert(1) opacity(0.85);
     transition: filter 0.25s;
@@ -505,15 +505,16 @@
   .brand-card--ondark img { filter: grayscale(1) brightness(1.35) opacity(0.85); }
   .brand-card--ondark:hover img { filter: grayscale(0) brightness(1) opacity(1); }
 
-  .brand-card--sm img { max-height: 30px; }
-  .brand-card--lg img { max-height: 72px; }
-  .brand-card--xl img { max-height: 88px; }
-  .brand-card--wide { padding: 0.5rem 0.4rem; }
-  .brand-card--wide img { max-height: 40px; }
+  .brand-card--sm img { max-height: 32px; }
+  .brand-card--lg img { max-height: 78px; }
+  .brand-card--xl img { max-height: 96px; }
+  .brand-card--wide { padding: 0.4rem 0.3rem; }
+  .brand-card--wide img { max-height: 62px; filter: grayscale(1) brightness(0) invert(1) opacity(1); }
+  .brand-card--wide:hover img { filter: grayscale(0) brightness(1) invert(0) opacity(1); }
 
   .brand-card--text {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.84rem;
+    font-size: 1.05rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #c9c2b4;
@@ -976,19 +977,19 @@
     <div class="brand-card" title="Decathlon">
       <img src="assets/logos/decathlon.png" alt="Decathlon" loading="lazy">
     </div>
-    <div class="brand-card" title="Commencal">
+    <div class="brand-card brand-card--lg" title="Commencal">
       <img src="assets/logos/commencal.png" alt="Commencal" loading="lazy">
     </div>
-    <div class="brand-card" title="Candide">
+    <div class="brand-card brand-card--lg" title="Candide">
       <img src="assets/logos/candide.png" alt="Candide" loading="lazy">
     </div>
     <div class="brand-card brand-card--ondark" title="Gomera Production">
       <img src="assets/logos/gomera-production.png" alt="Gomera Production" loading="lazy">
     </div>
-    <div class="brand-card" title="Vans">
+    <div class="brand-card brand-card--lg" title="Vans">
       <img src="assets/logos/vans.png" alt="Vans" loading="lazy">
     </div>
-    <div class="brand-card" title="Caterpillar">
+    <div class="brand-card brand-card--lg" title="Caterpillar">
       <img src="assets/logos/caterpillar.png" alt="Caterpillar" loading="lazy">
     </div>
     <div class="brand-card" title="Almo Film">
@@ -1000,7 +1001,7 @@
     <div class="brand-card brand-card--ondark" title="Tag Heuer">
       <img src="assets/logos/tag-heuer.png" alt="Tag Heuer" loading="lazy">
     </div>
-    <div class="brand-card" title="DJI">
+    <div class="brand-card brand-card--lg" title="DJI">
       <img src="assets/logos/dji.png" alt="DJI" loading="lazy">
     </div>
     <div class="brand-card" title="Studio Sport">
@@ -1037,7 +1038,7 @@
     <div class="brand-card" title="Wedze">
       <img src="assets/logos/wedze.png" alt="Wedze" loading="lazy">
     </div>
-    <div class="brand-card" title="Aigle">
+    <div class="brand-card brand-card--lg" title="Aigle">
       <img src="assets/logos/aigle.png" alt="Aigle" loading="lazy">
     </div>
     <div class="brand-card" title="Chez Gust">
@@ -1046,13 +1047,13 @@
     <div class="brand-card" title="ABM">
       <img src="assets/logos/abm.png" alt="ABM" loading="lazy">
     </div>
-    <div class="brand-card" title="Imagina Studio">
+    <div class="brand-card brand-card--lg" title="Imagina Studio">
       <img src="assets/logos/imagina-studio.png" alt="Imagina Studio" loading="lazy">
     </div>
     <div class="brand-card brand-card--lg" title="Tudor">
       <img src="assets/logos/tudor.png" alt="Tudor" loading="lazy">
     </div>
-    <div class="brand-card" title="Vaudoise Arena">
+    <div class="brand-card brand-card--lg" title="Vaudoise Arena">
       <img src="assets/logos/vaudoise-arena.png" alt="Vaudoise Arena" loading="lazy">
     </div>
     <div class="brand-card" title="Ride&amp;Drive Communication &amp; Events">
@@ -1064,7 +1065,7 @@
     <div class="brand-card" title="Kymco">
       <img src="assets/logos/kymco.png" alt="Kymco" loading="lazy">
     </div>
-    <div class="brand-card brand-card--lg" title="Nidecker Group">
+    <div class="brand-card brand-card--xl" title="Nidecker Group">
       <img src="assets/logos/nidecker-group.png" alt="Nidecker Group" loading="lazy">
     </div>
     <div class="brand-card" title="Burt Prod">
