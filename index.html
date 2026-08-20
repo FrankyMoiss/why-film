@@ -428,27 +428,57 @@
   }
 
   .service-card {
-    border: 1px solid rgba(255,255,255,0.07);
-    padding: 2rem;
-    background: var(--dark3);
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s;
+    min-height: 310px;
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: var(--dark3);
+    transition: border-color 0.3s, transform 0.3s;
   }
 
+  /* couche photo. Le meme grade est applique aux 5 images (desaturation +
+     bascule doree) pour qu'elles forment une serie coherente malgre des
+     lumieres d'origine tres differentes : banquise, ciel blanc, roche, ville. */
   .service-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
+    inset: 0;
+    background-image: var(--svc-img);
+    background-size: cover;
+    background-position: var(--svc-pos, center);
+    filter: saturate(0.48) contrast(1.06) brightness(0.94) sepia(0.30) hue-rotate(-10deg);
+    transform: scale(1.04);
+    transition: filter 0.55s ease, transform 0.55s ease;
   }
 
-  .service-card:hover { border-color: rgba(212,160,23,0.3); }
-  .service-card:hover::before { transform: scaleX(1); }
+  /* voile sombre pour la lisibilite du texte + filet dore anime au survol */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--gold), var(--gold)) left top / 0 2px no-repeat,
+      linear-gradient(180deg, rgba(5,5,5,0.10) 0%, rgba(5,5,5,0.30) 38%, rgba(5,5,5,0.72) 68%, rgba(5,5,5,0.93) 100%),
+      linear-gradient(180deg, rgba(212,160,23,0.11), rgba(212,160,23,0.02));
+    transition: background-size 0.35s ease;
+  }
+
+  .service-card:hover { border-color: rgba(212,160,23,0.35); }
+  .service-card:hover::after { background-size: 100% 2px, auto, auto; }
+  .service-card:hover::before {
+    filter: saturate(1) contrast(1.02) brightness(1.02) sepia(0) hue-rotate(0deg);
+    transform: scale(1.09);
+  }
+
+  .service-body {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem;
+  }
 
   .service-card.is-link { cursor: pointer; }
   .service-card.is-link:hover { transform: translateY(-3px); }
@@ -475,19 +505,23 @@
     background: rgba(10,10,10,0.4);
   }
 
-  .service-icon { font-size: 2rem; margin-bottom: 1rem; }
-
   .service-name {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text);
     margin-bottom: 0.8rem;
     font-weight: 600;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.9);
   }
 
-  .service-desc { font-size: 0.9rem; color: #888; line-height: 1.7; }
+  .service-desc {
+    font-size: 0.9rem;
+    color: #cfcfcf;
+    line-height: 1.7;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.95);
+  }
 
   /* ─── MARQUES ─── */
   .brands-intro {
@@ -975,34 +1009,39 @@
   <h2 class="section-title" data-i18n="section_services_title">Services</h2>
   <div class="section-line"></div>
   <div class="services-grid">
-    <div class="service-card is-link" onclick="showSection('realisations')">
-      <div class="service-icon">🎬</div>
-      <div class="service-name" data-i18n="svc1_name">Production Réalisation : Publicité, Film</div>
-      <p class="service-desc" data-i18n="svc1_desc">Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.</p>
-      <p class="service-link-hint" data-i18n="link_realisations">Voir les réalisations →</p>
+    <div class="service-card is-link" style="--svc-img: url('assets/services/production.jpg'); --svc-pos: 44% 58%" onclick="showSection('realisations')">
+      <div class="service-body">
+        <div class="service-name" data-i18n="svc1_name">Production Réalisation : Publicité, Film</div>
+        <p class="service-desc" data-i18n="svc1_desc">Production complète pour spots TV, web, clips musicaux. Direction artistique, tournage et post-production.</p>
+        <p class="service-link-hint" data-i18n="link_realisations">Voir les réalisations →</p>
+      </div>
     </div>
-    <div class="service-card is-link" onclick="showSection('aerial')">
-      <div class="service-icon">⚡</div>
-      <div class="service-name" data-i18n="svc2_name">Drone FPV</div>
-      <p class="service-desc" data-i18n="svc2_desc">Vols immersifs à grande vitesse, passages en FPV cinématiques. Des plans impossibles à obtenir autrement — intérieurs, extérieurs, tracking dynamique.</p>
-      <p class="service-link-hint" data-i18n="link_aerial">Voir Aerial Cinematography →</p>
+    <div class="service-card is-link" style="--svc-img: url('assets/services/fpv.jpg'); --svc-pos: center 42%" onclick="showSection('aerial')">
+      <div class="service-body">
+        <div class="service-name" data-i18n="svc2_name">Drone FPV</div>
+        <p class="service-desc" data-i18n="svc2_desc">Vols immersifs à grande vitesse, passages en FPV cinématiques. Des plans impossibles à obtenir autrement — intérieurs, extérieurs, tracking dynamique.</p>
+        <p class="service-link-hint" data-i18n="link_aerial">Voir Aerial Cinematography →</p>
+      </div>
     </div>
-    <div class="service-card is-link" onclick="showSection('aerial')">
-      <div class="service-icon">🚁</div>
-      <div class="service-name" data-i18n="svc3_name">Drone</div>
-      <p class="service-desc" data-i18n="svc3_desc">Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.</p>
-      <p class="service-link-hint" data-i18n="link_aerial">Voir Aerial Cinematography →</p>
+    <div class="service-card is-link" style="--svc-img: url('assets/services/drone.jpg'); --svc-pos: center 35%" onclick="showSection('aerial')">
+      <div class="service-body">
+        <div class="service-name" data-i18n="svc3_name">Drone</div>
+        <p class="service-desc" data-i18n="svc3_desc">Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.</p>
+        <p class="service-link-hint" data-i18n="link_aerial">Voir Aerial Cinematography →</p>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-icon">🏆</div>
-      <div class="service-name" data-i18n="svc4_name">Sport & Événement</div>
-      <p class="service-desc" data-i18n="svc4_desc">Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.</p>
+    <div class="service-card" style="--svc-img: url('assets/services/sport.jpg'); --svc-pos: center 40%">
+      <div class="service-body">
+        <div class="service-name" data-i18n="svc4_name">Sport & Événement</div>
+        <p class="service-desc" data-i18n="svc4_desc">Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.</p>
+      </div>
     </div>
-    <div class="service-card is-link" onclick="goRealisations('immobilier')">
-      <div class="service-icon">🏠</div>
-      <div class="service-name" data-i18n="svc6_name">Immobilier</div>
-      <p class="service-desc" data-i18n="svc6_desc">Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.</p>
-      <p class="service-link-hint" data-i18n="link_immobilier">Voir la réalisation Immobilier →</p>
+    <div class="service-card is-link" style="--svc-img: url('assets/services/realestate.jpg'); --svc-pos: center 45%" onclick="goRealisations('immobilier')">
+      <div class="service-body">
+        <div class="service-name" data-i18n="svc6_name">Immobilier & Tourisme</div>
+        <p class="service-desc" data-i18n="svc6_desc">Mise en valeur de biens immobiliers de prestige, d'hôtels et de destinations. Photos et vidéos aériennes pour agences, promoteurs et offices de tourisme.</p>
+        <p class="service-link-hint" data-i18n="link_immobilier">Voir la réalisation Immobilier →</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1315,8 +1354,8 @@
     svc3_desc: { fr: "Prises de vues aériennes haute qualité pour films, publicités, événements et documentaires. Résolution jusqu'au 6K, stabilisation gyroscopique.", en: "High-quality aerial footage for films, ads, events, and documentaries. Up to 6K resolution, gyroscopic stabilization." },
     svc4_name: { fr: "Sport & Événement", en: "Sport & Events" },
     svc4_desc: { fr: "Couverture live et filmée d'événements sportifs, festivals, concerts. Réactivité et discrétion garanties.", en: "Live and filmed coverage of sporting events, festivals, and concerts. Responsiveness and discretion guaranteed." },
-    svc6_name: { fr: "Immobilier", en: "Real Estate" },
-    svc6_desc: { fr: "Mise en valeur de biens immobiliers de prestige. Photos et vidéos aériennes pour agences et promoteurs.", en: "Showcasing prestige properties. Aerial photos and videos for agencies and developers." },
+    svc6_name: { fr: "Immobilier & Tourisme", en: "Real Estate & Tourism" },
+    svc6_desc: { fr: "Mise en valeur de biens immobiliers de prestige, d'hôtels et de destinations. Photos et vidéos aériennes pour agences, promoteurs et offices de tourisme.", en: "Showcasing prestige properties, hotels and destinations. Aerial photos and videos for agencies, developers and tourism boards." },
 
     brands_intro: { fr: "Marques & partenaires", en: "Brands & Partners" },
 
