@@ -878,6 +878,18 @@
       </div>
       <div class="video-label">Lapland Ice Driving</div>
     </div>
+    <div class="video-card" data-client="lapland" data-only="1">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1216094437?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+      <div class="video-label">LID Mood 2026</div>
+    </div>
+    <div class="video-card" data-client="lapland" data-only="1">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1216094436?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+      <div class="video-label">AI Action 2026</div>
+    </div>
     <div class="video-card" data-client="immobilier">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1122195115?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
@@ -889,6 +901,12 @@
         <iframe src="https://player.vimeo.com/video/1197947893?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
       <div class="video-label">The Goodwood Experience</div>
+    </div>
+    <div class="video-card" data-client="autres">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1216096018?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+      <div class="video-label">Capital.com @ Goodwood</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
@@ -1438,7 +1456,10 @@
 
   function filterRealisations(client) {
     document.querySelectorAll('#realisations .video-card').forEach(function (card) {
-      var show = (client === 'tous') || (card.getAttribute('data-client') === client);
+      // data-only : la carte n'apparait que sous son propre onglet, jamais sous "Tous"
+      var show = (client === 'tous')
+        ? card.getAttribute('data-only') !== '1'
+        : card.getAttribute('data-client') === client;
       card.style.display = show ? '' : 'none';
     });
     document.querySelectorAll('#realisations .filter-chip').forEach(function (btn) {
@@ -1451,6 +1472,10 @@
     try { saved = localStorage.getItem('whyfilm_lang') || 'fr'; } catch (e) {}
     applyLang(saved);
   })();
+
+  // etat initial des realisations : sans cet appel, les cartes data-only
+  // resteraient visibles sous "Tous" tant qu'aucun filtre n'a ete clique
+  filterRealisations('tous');
 </script>
 </body>
 </html>
