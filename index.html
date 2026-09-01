@@ -229,6 +229,131 @@
     .nav-links li a.active { color: var(--gold); }
   }
 
+
+  /* ─── LECTEUR CATALOGUE (accueil) ───
+     Grand lecteur en haut, rangees de vignettes dessous facon Apple TV. */
+  .featured-label .tv-now-kicker {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 0.3rem;
+  }
+
+  .tv-hint {
+    margin: 1.6rem 0 0.9rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  }
+
+  .tv-row { margin-bottom: 1.8rem; }
+
+  .tv-row-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 0.7rem;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.85);
+  }
+
+  /* bande horizontale : defilement au doigt, a la molette ou aux fleches */
+  .tv-strip {
+    display: flex;
+    gap: 0.7rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding: 0.35rem 0.2rem 0.5rem;
+    margin: -0.35rem -0.2rem -0.5rem;
+  }
+  .tv-strip::-webkit-scrollbar { display: none; }
+
+  .tv-card {
+    display: block;
+    flex: 0 0 auto;
+    width: 208px;
+    scroll-snap-align: start;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    transition: transform 0.22s ease;
+  }
+
+  .tv-thumb {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.09);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.5);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .tv-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.72) brightness(0.82);
+    transition: filter 0.22s ease;
+  }
+
+  .tv-card:hover, .tv-card:focus-visible { transform: translateY(-4px) scale(1.045); outline: none; }
+  .tv-card:hover .tv-thumb img, .tv-card:focus-visible .tv-thumb img { filter: saturate(1) brightness(1); }
+  .tv-card:hover .tv-thumb, .tv-card:focus-visible .tv-thumb {
+    border-color: rgba(212,160,23,0.55);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.65);
+  }
+  .tv-card:focus-visible .tv-thumb { border-color: var(--gold); }
+
+  /* vignette en cours de lecture */
+  .tv-card.en-cours .tv-thumb { border-color: var(--gold); }
+  .tv-card.en-cours .tv-thumb img { filter: saturate(1) brightness(1); }
+  .tv-card.en-cours .tv-card-title { color: var(--gold); }
+
+  .tv-card-kicker {
+    display: block;
+    margin-top: 0.45rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  .tv-card-title {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    color: #d8d8d8;
+    transition: color 0.22s;
+  }
+
+  @media (max-width: 700px) {
+    .tv-card { width: 158px; }
+    .tv-row { margin-bottom: 1.4rem; }
+    .tv-row-title { font-size: 0.8rem; }
+  }
+
   /* ─── SECTIONS ─── */
   section {
     display: none;
@@ -858,19 +983,19 @@
 <!-- ─── ACCUEIL ─── -->
 <section id="accueil" class="active">
   <p class="accueil-tagline" data-i18n="hero_tagline">Film Maker · FPV · Drone</p>
+
   <div class="featured-video">
     <div class="featured-embed">
-      <iframe src="https://player.vimeo.com/video/1012702143?title=0&byline=0&portrait=0" allowfullscreen allow="autoplay; fullscreen"></iframe>
+      <iframe id="tv-player" src="https://player.vimeo.com/video/1012702143?title=0&byline=0&portrait=0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
     </div>
-    <div class="featured-label">Red Komodo FPV &amp; DJI Inspire 3 Showreel</div>
+    <div class="featured-label">
+      <span class="tv-now-kicker" id="tv-now-kicker" data-i18n="tv_showreel">Showreel</span>
+      <span id="tv-now-title">Red Komodo FPV &amp; DJI Inspire 3 Showreel</span>
+    </div>
   </div>
 
-  <div class="featured-video" style="margin-top: 2rem;">
-    <div class="featured-embed">
-      <iframe src="https://player.vimeo.com/video/1222944731?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
-    </div>
-    <div class="featured-label">Porsche GT3 @ Lapland Ice Driving</div>
-  </div>
+  <p class="tv-hint" data-i18n="tv_hint">Tout le catalogue — cliquez une vignette, ou naviguez aux flèches du clavier</p>
+  <div class="tv-rows" id="tv-rows"></div>
 </section>
 
 <!-- ─── SHOWREEL ─── -->
@@ -1424,6 +1549,14 @@
     section_apropos_title: { fr: "À propos", en: "About" },
     section_contact_title: { fr: "Contact", en: "Contact" },
 
+    tv_une: { fr: "À la une", en: "Featured" },
+    tv_showreel: { fr: "Showreel", en: "Showreel" },
+    tv_lapland: { fr: "Lapland Ice Driving", en: "Lapland Ice Driving" },
+    tv_aerial: { fr: "Aerial Cinematography", en: "Aerial Cinematography" },
+    tv_decathlon: { fr: "Decathlon", en: "Decathlon" },
+    tv_autres: { fr: "Autres", en: "Other" },
+    tv_hint: { fr: "Tout le catalogue — cliquez une vignette, ou naviguez aux flèches du clavier", en: "The full catalogue — click a thumbnail, or use the arrow keys" },
+
     filter_tous: { fr: "Tous", en: "All" },
     filter_immobilier: { fr: "Immobilier", en: "Real Estate" },
     filter_autres: { fr: "Autres", en: "Other" },
@@ -1536,6 +1669,99 @@
       btn.classList.toggle('active', btn.getAttribute('data-filter') === client);
     });
   }
+
+  var TV_CATALOGUE = [{"cle":"tv_une","fr":"À la une","en":"Featured","v":[{"p":"vimeo","id":"1012702143","t":"Red Komodo FPV & DJI Inspire 3 Showreel"},{"p":"vimeo","id":"1222944731","t":"Porsche GT3 @ Lapland Ice Driving"}]},{"cle":"tv_showreel","fr":"Showreel","en":"Showreel","v":[{"p":"vimeo","id":"1012702143","t":"Red Komodo FPV & DJI Inspire 3 Showreel"},{"p":"vimeo","id":"1044330739","t":"Showreel FPV GoPro"},{"p":"vimeo","id":"1012655044","t":"FPV GoPro Showreel 2023"},{"p":"vimeo","id":"549449379","t":"1mn ShowReel"},{"p":"vimeo","id":"1012654738","t":"Action Showreel 2020"}]},{"cle":"tv_lapland","fr":"Lapland Ice Driving","en":"Lapland Ice Driving","v":[{"p":"vimeo","id":"1222944731","t":"Porsche GT3 @ Lapland Ice Driving"},{"p":"vimeo","id":"1216094437","t":"LID Mood 2026"},{"p":"vimeo","id":"1216094436","t":"AI Action 2026"},{"p":"vimeo","id":"1013440927","t":"Lapland Ice Driving"}]},{"cle":"tv_aerial","fr":"Aerial Cinematography","en":"Aerial Cinematography","v":[{"p":"youtube","id":"3lZXf10qcyM","t":"Go Full Throttle with the LINE Optic","k":"Almo Film X Line Ski"},{"p":"youtube","id":"AA5DgSKG1Qg","t":"Defy The Norm — English version","k":"Almo Film X Ekoi"},{"p":"youtube","id":"dXFAO7KlZQI","t":"Reborn — Edgar Briole","k":"Commencal Edgar Briole","s":67},{"p":"youtube","id":"JLrqOXJNO0Q","t":"The Art of Movement — Angle 3","k":"Commencal"},{"p":"youtube","id":"_smOoXDuyJU","t":"Les Tufs","k":"Candide Thovex"},{"p":"youtube","id":"ux08B6U6upw","t":"L'Aiguille percée","k":"Candide Thovex"},{"p":"youtube","id":"p-mZTR1glq4","t":"Pretty Tight","k":"Candide Thovex"},{"p":"youtube","id":"7XCZf6jUnOQ","t":"Yellow Pow","k":"Candide Thovex"},{"p":"youtube","id":"0Po24ujWKlQ","t":"Some Laps in Crans-Montana Park","k":"Candide Thovex"}]},{"cle":"tv_decathlon","fr":"Decathlon","en":"Decathlon","v":[{"p":"vimeo","id":"860047977","t":"Decathlon Snowboard 2024"},{"p":"vimeo","id":"1035568075","t":"Decathlon Snowboard 2025"},{"p":"vimeo","id":"1012669213","t":"Product Development, a collaboration with Decathlon"}]},{"cle":"tv_autres","fr":"Autres","en":"Other","v":[{"p":"vimeo","id":"1122195115","t":"BlackRock Real Estate Forum 2025"},{"p":"vimeo","id":"1216096018","t":"Capital.com @ Goodwood"},{"p":"vimeo","id":"1045665790","t":"COMMENCAL BIKES TEMPO POWER — Hugo Frixtalon"},{"p":"vimeo","id":"652160973","t":"A VIP Week End in Milano by IQOS"},{"p":"vimeo","id":"1219796141","t":"Harley FMX"},{"p":"vimeo","id":"1012654380","t":"DJI Lyon"},{"p":"vimeo","id":"1197947893","t":"The Goodwood Experience"},{"p":"vimeo","id":"364469394","t":"Method Boat"}]}];
+
+  // ─── Lecteur catalogue de l'accueil ───
+  function tvUrl(v, autoplay) {
+    var q;
+    if (v.p === 'vimeo') {
+      q = 'https://player.vimeo.com/video/' + v.id + '?title=0&byline=0&portrait=0';
+    } else {
+      q = 'https://www.youtube.com/embed/' + v.id + '?feature=oembed&rel=0';
+      if (v.s) q += '&start=' + v.s;
+    }
+    return autoplay ? q + '&autoplay=1' : q;
+  }
+
+  function tvJouer(cle, v, carte) {
+    var lecteur = document.getElementById('tv-player');
+    if (!lecteur) return;
+    lecteur.src = tvUrl(v, true);
+    var titre = document.getElementById('tv-now-title');
+    var kicker = document.getElementById('tv-now-kicker');
+    if (titre) titre.textContent = v.t;
+    if (kicker) {
+      kicker.setAttribute('data-i18n', cle);
+      var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+      kicker.textContent = I18N[cle] ? I18N[cle][lang] : cle;
+    }
+    document.querySelectorAll('.tv-card.en-cours').forEach(function (c) { c.classList.remove('en-cours'); });
+    if (carte) carte.classList.add('en-cours');
+    document.querySelector('.featured-video').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function tvConstruire() {
+    var hote = document.getElementById('tv-rows');
+    if (!hote) return;
+    TV_CATALOGUE.forEach(function (rang) {
+      var bloc = document.createElement('div');
+      bloc.className = 'tv-row';
+
+      var titre = document.createElement('div');
+      titre.className = 'tv-row-title';
+      titre.setAttribute('data-i18n', rang.cle);
+      titre.textContent = rang.fr;
+      bloc.appendChild(titre);
+
+      var bande = document.createElement('div');
+      bande.className = 'tv-strip';
+
+      rang.v.forEach(function (v) {
+        var carte = document.createElement('button');
+        carte.type = 'button';
+        carte.className = 'tv-card';
+        carte.setAttribute('aria-label', v.t);
+        carte.innerHTML =
+          '<span class="tv-thumb"><img src="assets/thumbs/' + v.id + '.jpg" alt="" loading="lazy" decoding="async"></span>' +
+          (v.k ? '<span class="tv-card-kicker"></span>' : '') +
+          '<span class="tv-card-title"></span>';
+        if (v.k) carte.querySelector('.tv-card-kicker').textContent = v.k;
+        carte.querySelector('.tv-card-title').textContent = v.t;
+        carte.addEventListener('click', function () { tvJouer(rang.cle, v, carte); });
+        bande.appendChild(carte);
+      });
+
+      bloc.appendChild(bande);
+      hote.appendChild(bloc);
+    });
+
+    // navigation aux fleches : gauche/droite dans la rangee, haut/bas d'une rangee a l'autre
+    hote.addEventListener('keydown', function (e) {
+      var cible = e.target;
+      if (!cible.classList || !cible.classList.contains('tv-card')) return;
+      var bande = cible.parentElement;
+      var cartes = [].slice.call(bande.children);
+      var i = cartes.indexOf(cible);
+      var bandes = [].slice.call(hote.querySelectorAll('.tv-strip'));
+      var b = bandes.indexOf(bande);
+      var suivant = null;
+
+      if (e.key === 'ArrowRight') suivant = cartes[i + 1];
+      else if (e.key === 'ArrowLeft') suivant = cartes[i - 1];
+      else if (e.key === 'ArrowDown' && bandes[b + 1]) suivant = bandes[b + 1].children[Math.min(i, bandes[b + 1].children.length - 1)];
+      else if (e.key === 'ArrowUp' && bandes[b - 1]) suivant = bandes[b - 1].children[Math.min(i, bandes[b - 1].children.length - 1)];
+      else return;
+
+      if (suivant) {
+        e.preventDefault();
+        suivant.focus();
+        suivant.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }
+    });
+  }
+
+  tvConstruire();
 
   (function initLang() {
     var saved = 'fr';
