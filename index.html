@@ -309,6 +309,11 @@
 
   @media (max-width: 700px) { .video-grid { grid-template-columns: 1fr; } }
 
+  /* onglet Lapland Ice Driving : la Porsche GT3 en tete, l'ancienne premiere en fin.
+     L'ordre du DOM sert l'onglet "Tous", order ne s'applique qu'a cet onglet. */
+  .video-grid.filtre-lapland .video-card[data-vid="1222944731"] { order: -1; }
+  .video-grid.filtre-lapland .video-card[data-vid="1013440927"] { order: 1; }
+
   .video-card {
     position: relative;
     background: var(--dark3);
@@ -856,6 +861,13 @@
     </div>
     <div class="featured-label">Red Komodo FPV &amp; DJI Inspire 3 Showreel</div>
   </div>
+
+  <div class="featured-video" style="margin-top: 2rem;">
+    <div class="featured-embed">
+      <iframe src="https://player.vimeo.com/video/1222944731?h=8aa81bf42e&amp;title=0&amp;byline=0&amp;portrait=0" allowfullscreen allow="fullscreen"></iframe>
+    </div>
+    <div class="featured-label">Porsche GT3 @ Lapland Ice Driving</div>
+  </div>
 </section>
 
 <!-- ─── SHOWREEL ─── -->
@@ -910,7 +922,7 @@
   </div>
 
   <div class="video-grid">
-    <div class="video-card" data-client="lapland">
+    <div class="video-card" data-client="lapland" data-vid="1013440927">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/1013440927?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
@@ -969,6 +981,12 @@
         <iframe src="https://player.vimeo.com/video/860047977?title=0&byline=0&portrait=0" allowfullscreen allow="fullscreen"></iframe>
       </div>
       <div class="video-label">Decathlon Snowboard 2024</div>
+    </div>
+    <div class="video-card" data-client="lapland" data-vid="1222944731">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1222944731?h=8aa81bf42e&amp;title=0&amp;byline=0&amp;portrait=0" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+      <div class="video-label">Porsche GT3 @ Lapland Ice Driving</div>
     </div>
     <div class="video-card" data-client="autres">
       <div class="video-embed">
@@ -1502,6 +1520,8 @@
   }
 
   function filterRealisations(client) {
+    var grille = document.querySelector('#realisations .video-grid');
+    if (grille) grille.className = 'video-grid filtre-' + client;
     document.querySelectorAll('#realisations .video-card').forEach(function (card) {
       // data-only : la carte n'apparait que sous son propre onglet, jamais sous "Tous"
       var show = (client === 'tous')
