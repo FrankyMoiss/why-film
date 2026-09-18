@@ -30,6 +30,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚁</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<!-- Mesure d'audience Umami : sans cookie, exempt de bandeau de consentement -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="cde41ec8-cb97-4bb3-a98a-deb216adbcc0"></script>
 <style>
   :root {
     --gold: #D4A017;
@@ -969,9 +971,9 @@
     </ul>
     <button type="button" class="nav-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <div class="lang-switch">
-      <button type="button" data-lang-btn="fr" class="active" onclick="applyLang('fr')">FR</button>
+      <button type="button" data-lang-btn="fr" class="active" onclick="applyLang('fr'); mesurer('langue', { langue: 'fr' })">FR</button>
       <span>/</span>
-      <button type="button" data-lang-btn="en" onclick="applyLang('en')">EN</button>
+      <button type="button" data-lang-btn="en" onclick="applyLang('en'); mesurer('langue', { langue: 'en' })">EN</button>
     </div>
   </div>
 </nav>
@@ -1489,7 +1491,7 @@
       <br>
       <p><a href="https://vimeo.com/frankymoiss" target="_blank" rel="noopener" style="color:var(--muted)">Vimeo</a> &nbsp;·&nbsp; <a href="https://instagram.com/frankymoiss" target="_blank" rel="noopener" style="color:var(--muted)">Instagram</a></p>
     </div>
-    <form class="contact-form" action="https://formsubmit.co/frankymoiss@gmail.com" method="POST">
+    <form class="contact-form" action="https://formsubmit.co/frankymoiss@gmail.com" method="POST" onsubmit="mesurer('contact')">
       <input type="hidden" name="_subject" value="Nouveau message — Why Film">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -1679,6 +1681,14 @@
 
   window.addEventListener('popstate', ouvrirDepuisURL);
 
+  // clics sur les logos clients et sur les coordonnees
+  document.addEventListener('click', function (e) {
+    var logo = e.target.closest && e.target.closest('.brands-grid a.brand-card');
+    if (logo) { mesurer('logo', { client: logo.title, vers: logo.getAttribute('href') }); return; }
+    var lien = e.target.closest && e.target.closest('a[href^="mailto:"], a[href^="tel:"], a[href*="instagram.com"], a[href*="vimeo.com/frankymoiss"]');
+    if (lien) mesurer('contact-lien', { type: lien.href.split(':')[0].replace('https', 'lien'), cible: lien.textContent.trim() });
+  });
+
   function goRealisations(client) {
     showSection('realisations');
     filterRealisations(client);
@@ -1701,6 +1711,11 @@
   }
 
   var TV_CATALOGUE = [{"cle":"tv_une","fr":"À la une","v":[{"p":"vimeo","id":"1012702143","t":"Red Komodo FPV & DJI Inspire 3 Showreel"},{"p":"vimeo","id":"1222944731","t":"Porsche GT3 @ Lapland Ice Driving"},{"p":"vimeo","id":"1122195115","t":"BlackRock Real Estate Forum 2025"},{"p":"vimeo","id":"1197947893","t":"The Goodwood Experience"},{"p":"vimeo","id":"1045665790","t":"COMMENCAL BIKES TEMPO POWER — Hugo Frixtalon"}]},{"cle":"tv_realisations","fr":"Réalisations","v":[{"p":"vimeo","id":"1216096018","t":"Capital.com @ Goodwood"},{"p":"vimeo","id":"652160973","t":"A VIP Week End in Milano by IQOS"},{"p":"vimeo","id":"1219796141","t":"Harley FMX"},{"p":"vimeo","id":"1012654380","t":"DJI Lyon"},{"p":"vimeo","id":"1225184076","t":"Descote Teaser"},{"p":"vimeo","id":"364469394","t":"Method Boat"}]},{"cle":"tv_aerial","fr":"Aerial Cinematography","v":[{"p":"youtube","id":"3lZXf10qcyM","t":"Go Full Throttle with the LINE Optic","k":"Almo Film X Line Ski"},{"p":"youtube","id":"AA5DgSKG1Qg","t":"Defy The Norm — English version","k":"Almo Film X Ekoi"},{"p":"youtube","id":"_smOoXDuyJU","t":"Les Tufs","k":"Candide Thovex"},{"p":"youtube","id":"ux08B6U6upw","t":"L'Aiguille percée","k":"Candide Thovex"},{"p":"youtube","id":"dXFAO7KlZQI","t":"Reborn — Edgar Briole","k":"Commencal Edgar Briole","s":67},{"p":"youtube","id":"JLrqOXJNO0Q","t":"The Art of Movement — Angle 3","k":"Commencal"},{"p":"youtube","id":"p-mZTR1glq4","t":"Pretty Tight","k":"Candide Thovex"},{"p":"youtube","id":"7XCZf6jUnOQ","t":"Yellow Pow","k":"Candide Thovex"},{"p":"youtube","id":"0Po24ujWKlQ","t":"Some Laps in Crans-Montana Park","k":"Candide Thovex"}]},{"cle":"tv_lapland","fr":"Lapland Ice Driving","v":[{"p":"vimeo","id":"1216094437","t":"LID Mood 2026"},{"p":"vimeo","id":"1216094436","t":"AI Action 2026"},{"p":"vimeo","id":"1013440927","t":"Lapland Ice Driving"}]},{"cle":"tv_decathlon","fr":"Decathlon","v":[{"p":"vimeo","id":"860047977","t":"Decathlon Snowboard 2024"},{"p":"vimeo","id":"1035568075","t":"Decathlon Snowboard 2025"},{"p":"vimeo","id":"1012669213","t":"Product Development, a collaboration with Decathlon"}]},{"cle":"tv_showreel","fr":"Showreel","v":[{"p":"vimeo","id":"1012702143","t":"Red Komodo FPV & DJI Inspire 3 Showreel"},{"p":"vimeo","id":"1044330739","t":"Showreel FPV GoPro"},{"p":"vimeo","id":"1012655044","t":"FPV GoPro Showreel 2023"},{"p":"vimeo","id":"549449379","t":"1mn ShowReel"},{"p":"vimeo","id":"1012654738","t":"Action Showreel 2020"}]}];
+
+  // envoi d'un evenement a Umami ; silencieux si le script est bloque
+  function mesurer(nom, donnees) {
+    try { if (window.umami && umami.track) umami.track(nom, donnees || {}); } catch (e) {}
+  }
 
   // ─── Lecteur catalogue de l'accueil ───
   // videos jouables par lien direct (#video/…) sans apparaitre dans les rangees
@@ -1736,6 +1751,7 @@
     var lecteur = document.getElementById('tv-player');
     if (!lecteur) return;
     lecteur.src = tvUrl(v, true);
+    mesurer('video', { titre: v.t, id: v.id, rangee: cle });
     var titre = document.getElementById('tv-now-title');
     var kicker = document.getElementById('tv-now-kicker');
     if (titre) titre.textContent = v.t;
