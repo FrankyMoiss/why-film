@@ -1751,6 +1751,7 @@
   function tvJouer(cle, v, carte) {
     var lecteur = document.getElementById('tv-player');
     if (!lecteur) return;
+    tvAnnulerAuto();
     lecteur.src = tvUrl(v, true);
     mesurer('video', { titre: v.t, id: v.id, rangee: cle });
     var titre = document.getElementById('tv-now-title');
@@ -1764,6 +1765,25 @@
     document.querySelectorAll('.tv-card.en-cours').forEach(function (c) { c.classList.remove('en-cours'); });
     if (carte) carte.classList.add('en-cours');
     document.querySelector('.featured-video').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // lancement automatique de la video de couverture 5 s apres l'ouverture.
+  // En muet : les navigateurs bloquent tout demarrage automatique avec le son.
+  var tvMinuteur = null;
+
+  function tvLancementAuto() {
+    tvMinuteur = setTimeout(function () {
+      var lecteur = document.getElementById('tv-player');
+      if (!lecteur) return;
+      if (!document.getElementById('accueil').classList.contains('active')) return;
+      if (lecteur.src.indexOf('autoplay=1') > -1) return;
+      lecteur.src = lecteur.src + '&autoplay=1&muted=1';
+      mesurer('video-auto', { titre: document.getElementById('tv-now-title').textContent });
+    }, 5000);
+  }
+
+  function tvAnnulerAuto() {
+    if (tvMinuteur) { clearTimeout(tvMinuteur); tvMinuteur = null; }
   }
 
   function tvConstruire() {
@@ -1839,6 +1859,7 @@
   // resteraient visibles sous "Tous" tant qu'aucun filtre n'a ete clique
   filterRealisations('tous', false);
   ouvrirDepuisURL();
+  tvLancementAuto();
 </script>
 </body>
 </html>
